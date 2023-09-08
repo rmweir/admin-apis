@@ -1,0 +1,11 @@
+package instance
+
+// Announcement contains an announcement that should be shown within the Loft instance.
+// This information is sent to Loft instances when they check in with the license server.
+// +k8s:deepcopy-gen=true
+type Announcement struct {
+	// Title contains the title of the announcement in HTML format.
+	Title string `json:"title,omitempty"`
+	// Body contains the main message of the announcement in HTML format.
+	Body string `json:"body,omitempty"`
+}
