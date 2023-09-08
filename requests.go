@@ -1,15 +1,11 @@
-package instance
-
-import (
-	"github.com/loft-sh/license-api/auth"
-)
+package licenseapi
 
 // CreateInput is the required input data for "instance create" operations, that is, the
 // primary endpoint that Loft instances will hit to register to the license server as well as get
 // information about the instance's current license.
 // +k8s:deepcopy-gen=true
 type CreateInput struct {
-	*auth.InstanceToken
+	*InstanceTokenAuth
 
 	// Product is the product that is being used. Can be empty, loft, devpod-pro or vcluster-pro.
 	Product string `json:"product,omitempty" form:"product"`

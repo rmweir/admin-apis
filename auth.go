@@ -1,7 +1,7 @@
-package auth
+package licenseapi
 
 // +k8s:deepcopy-gen=true
-type InstanceToken struct {
+type InstanceTokenAuth struct {
 	// Token is the jwt token identifying the loft instance.
 	Token string `json:"token" query:"token" validate:"required"`
 	// Certificate is the signing certificate for the token.

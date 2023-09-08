@@ -1,9 +1,11 @@
-package feature
+package licenseapi
 
-// Entry contains information regarding to a feature
+// Feature contains information regarding to a feature
 // +k8s:deepcopy-gen=true
-type Entry struct {
-	Feature Feature `json:"feature"`
+type Feature struct {
+	// Name is the name of the feature
+	Name FeatureName `json:"feature"`
+
 	// +optional
 	Module string `json:"module,omitempty"`
 	// +optional

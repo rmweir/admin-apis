@@ -1,4 +1,4 @@
-package instance
+package licenseapi
 
 // ResourceQuantity represents an api resource and a quantity counter for that resource type (used for limits for example).
 // +k8s:deepcopy-gen=true

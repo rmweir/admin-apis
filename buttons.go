@@ -1,4 +1,4 @@
-package button
+package licenseapi
 
 // Button is an object that represents a button in the Loft UI that links to some external service
 // for handling operations for licensing for example.

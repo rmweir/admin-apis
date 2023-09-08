@@ -22,6 +22,20 @@ generate-go-apis:
     -O zz_generated.deepcopy \
     -o .
 
+gen:
+  mkdir -p licenseapi
+
+  cp $(find . -type f -name "*.go") licenseapi
+
+  go run k8s.io/code-generator/cmd/deepcopy-gen@v0.28.1 \
+    --go-header-file ./hack/boilerplate.go.txt \
+    --input-dirs ./licenseapi \
+    -O zz_generated.deepcopy
+
+  cp licenseapi/zz_generated.deepcopy.go .
+
+  rm -rf licenseapi
+
 # Update a specific dependency or all
 [no-cd]
 update dep:
