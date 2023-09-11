@@ -1,10 +1,10 @@
 package licenseapi
 
-// CreateInput is the required input data for "instance create" operations, that is, the
+// InstanceCreateInput is the required input data for "instance create" operations, that is, the
 // primary endpoint that Loft instances will hit to register to the license server as well as get
 // information about the instance's current license.
 // +k8s:deepcopy-gen=true
-type CreateInput struct {
+type InstanceCreateInput struct {
 	*InstanceTokenAuth
 
 	// Product is the product that is being used. Can be empty, loft, devpod-pro or vcluster-pro.
@@ -27,10 +27,10 @@ type CreateInput struct {
 	Config string `json:"config,omitempty" form:"config"`
 }
 
-// CreateOutput is the struct holding all information returned from "instance create"
+// InstanceCreateOutput is the struct holding all information returned from "instance create"
 // requests.
 // +k8s:deepcopy-gen=true
-type CreateOutput struct {
+type InstanceCreateOutput struct {
 	// License is the license data for the requested Loft instance.
 	License     *License `json:"license,omitempty"`
 	CurrentTime int64    `json:"currentTime"`
