@@ -23,6 +23,8 @@ var (
 	VirtualClusterSleepMode             FeatureName = "vcluster-sleep-mode"
 	VirtualClusterSyncPatches           FeatureName = "vcluster-sync-patches"
 
+	VirtualClustersPro FeatureName = "vcluster-pro"
+
 	// Spaces & Clusters
 	ClusterAccess     FeatureName = "cluster-access"
 	ClusterRoles      FeatureName = "cluster-roles"
