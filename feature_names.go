@@ -59,4 +59,10 @@ var (
 	// UI Customization Features
 	AdvancedUICustomizations FeatureName = "advanced-ui-customizations"
 	CustomBranding           FeatureName = "custom-branding"
+
+	// Utils - not to be directly used by the license service
+	Metrics                FeatureName = "metrics"
+	AppStore               FeatureName = "app-store"
+	ConnectLocalCluster    FeatureName = "connect-local-cluster"
+	PasswordAuthentication FeatureName = "password-auth"
 )
