@@ -2,6 +2,7 @@ package licenseapi
 
 // Button is an object that represents a button in the Loft UI that links to some external service
 // for handling operations for licensing for example.
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Button struct {
 	// URL is the link at the other end of the button.
