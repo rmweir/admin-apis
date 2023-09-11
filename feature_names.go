@@ -6,6 +6,8 @@ var (
 	AllFeatures FeatureName = "all"
 
 	// DevPod
+	DevPod FeatureName = "devpod"
+
 	DevPodWorkspaces FeatureName = "devpod-workspaces"
 
 	// Runners
