@@ -2,6 +2,7 @@ package licenseapi
 
 // License is a struct representing the license data sent to a Loft instance after checking in with
 // the license server.
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type License struct {
 	// Analytics indicates the analytics endpoints and which requests should be sent to the

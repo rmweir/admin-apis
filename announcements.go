@@ -2,6 +2,7 @@ package licenseapi
 
 // Announcement contains an announcement that should be shown within the Loft instance.
 // This information is sent to Loft instances when they check in with the license server.
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Announcement struct {
 	// Title contains the title of the announcement in HTML format.

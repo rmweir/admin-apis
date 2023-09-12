@@ -1,6 +1,7 @@
 package licenseapi
 
 // Feature contains information regarding to a feature
+// +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Feature struct {
 	// Name is the name of the feature
