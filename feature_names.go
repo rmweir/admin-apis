@@ -2,7 +2,7 @@ package licenseapi
 
 type FeatureName string
 
-var (
+const (
 	AllFeatures FeatureName = "all"
 
 	// DevPod
