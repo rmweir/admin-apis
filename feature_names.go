@@ -62,7 +62,6 @@ var (
 
 	// Utils - not to be directly used by the license service
 	Metrics                FeatureName = "metrics"
-	AppStore               FeatureName = "app-store"
 	ConnectLocalCluster    FeatureName = "connect-local-cluster"
 	PasswordAuthentication FeatureName = "password-auth"
 )
