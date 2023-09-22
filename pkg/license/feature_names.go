@@ -1,36 +1,27 @@
-package licenseapi
+package license
 
 type FeatureName string
 
 const (
-	AllFeatures FeatureName = "all"
-
 	// DevPod
-	DevPod FeatureName = "devpod"
-
-	DevPodWorkspaces FeatureName = "devpod-workspaces"
-
-	// Runners
-	Runners FeatureName = "runners"
+	DevPod        FeatureName = "devpod"
+	DevPodRunners FeatureName = "devpod-runners"
 
 	// Virtual Clusters
-	VirtualClusters FeatureName = "vcluster"
-
+	VirtualCluster                      FeatureName = "vcluster"
+	VirtualClusterSleepMode             FeatureName = "vcluster-sleep-mode"
 	VirtualClusterAdmissionControl      FeatureName = "vcluster-admission-control"
 	VirtualClusterBuiltInCoreDNS        FeatureName = "vcluster-built-in-coredns"
 	VirtualClusterCentralHostPathMapper FeatureName = "vcluster-host-path-mapper"
 	VirtualClusterIsolatedControlPlane  FeatureName = "vcluster-isolated-control-plane"
-	VirtualClusterSleepMode             FeatureName = "vcluster-sleep-mode"
 	VirtualClusterSyncPatches           FeatureName = "vcluster-sync-patches"
 
-	VirtualClustersPro FeatureName = "vcluster-pro"
-
 	// Spaces & Clusters
-	ClusterAccess     FeatureName = "cluster-access"
-	ClusterRoles      FeatureName = "cluster-roles"
-	ConnectedClusters FeatureName = "clusters"
-	Spaces            FeatureName = "spaces"
-	SpacesSleepMode   FeatureName = "spaces-sleep-mode"
+	Cluster            FeatureName = "cluster"
+	ClusterAccess      FeatureName = "cluster-access"
+	ClusterRoles       FeatureName = "cluster-roles"
+	Namespace          FeatureName = "namespace"
+	NamespaceSleepMode FeatureName = "namespace-sleep-mode"
 
 	// Auth-Related Features
 	AuditLogging         FeatureName = "audit-logging"

@@ -1,4 +1,4 @@
-package licenseapi
+package license
 
 // Announcement contains an announcement that should be shown within the Loft instance.
 // This information is sent to Loft instances when they check in with the license server.
@@ -9,4 +9,6 @@ type Announcement struct {
 	Title string `json:"title,omitempty"`
 	// Body contains the main message of the announcement in HTML format.
 	Body string `json:"body,omitempty"`
+	// Buttons to show alongside the announcement
+	Buttons []Button `json:"body,omitempty"`
 }

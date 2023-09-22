@@ -12,19 +12,11 @@ lint *ARGS:
 
 # Generate all Go related APIs and files
 gen:
-  rm -rf licenseapi
-  mkdir -p licenseapi
-
-  cp $(find . -type f -name "*.go") licenseapi
-
   go run k8s.io/code-generator/cmd/deepcopy-gen@v0.28.1 \
     --go-header-file ./hack/boilerplate.go.txt \
-    --input-dirs ./licenseapi \
-    -O zz_generated.deepcopy
-
-  cp licenseapi/zz_generated.deepcopy.go .
-
-  rm -rf licenseapi
+    --input-dirs ./pkg/license,./pkg/licenseapi \
+    -O zz_generated.deepcopy \
+    -o ./
 
 # Check struct memory alignment and print potential improvements
 [no-exit-message]
