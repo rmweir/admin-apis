@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 type FeatureName string
 
