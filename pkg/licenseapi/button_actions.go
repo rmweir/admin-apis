@@ -1,7 +1,5 @@
 package licenseapi
 
-import "github.com/loft-sh/license-api/pkg/license"
-
 // ButtonActionInput defines the payload that needs to be sent to a button's action URL
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
@@ -26,5 +24,5 @@ type ButtonActionOutput struct {
 
 	// Buttons to be shown to the user alongside other content (e.g. HTML).
 	// +optional
-	Buttons []license.Button `json:"buttons,omitempty"`
+	Buttons []Button `json:"buttons,omitempty"`
 }

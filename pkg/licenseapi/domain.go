@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 // +k8s:deepcopy-gen=true
 type DomainToken struct {

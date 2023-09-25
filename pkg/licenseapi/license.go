@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 // License is a struct representing the license data sent to a Loft instance after checking in with
 // the license server.

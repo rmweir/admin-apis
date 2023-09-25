@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 // ResourceQuantity represents an api resource and a quantity counter for that resource type (used for limits for example).
 // +k8s:openapi-gen=true

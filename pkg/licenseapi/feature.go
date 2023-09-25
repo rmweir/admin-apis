@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 // Feature contains information regarding to a feature
 // +k8s:openapi-gen=true

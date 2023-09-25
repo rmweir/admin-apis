@@ -1,4 +1,4 @@
-package license
+package licenseapi
 
 // Module is a struct representing a module of the product
 // +k8s:openapi-gen=true
