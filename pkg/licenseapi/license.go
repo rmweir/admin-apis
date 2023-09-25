@@ -5,6 +5,9 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type License struct {
+	// InstanceID contains the instance id of the Loft instance
+	InstanceID string `json:"instance,omitempty"`
+
 	// Analytics indicates the analytics endpoints and which requests should be sent to the
 	// analytics server.
 	// +optional
