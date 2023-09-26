@@ -59,23 +59,28 @@ func New(product ProductName) *License {
 						Hidden:      hideVirtualClusterFeatures,
 					},
 					{
+						DisplayName: "Security-Hardened vCluster Image",
+						Name:        string(VirtualClusterProDistroImage),
+						Hidden:      hideVirtualClusterFeatures,
+					},
+					{
 						DisplayName: "Built-In CoreDNS",
-						Name:        string(VirtualClusterBuiltInCoreDNS),
+						Name:        string(VirtualClusterProDistroBuiltInCoreDNS),
 						Hidden:      hideVirtualClusterFeatures,
 					},
 					{
 						DisplayName: "Virtual Admission Control",
-						Name:        string(VirtualClusterAdmissionControl),
+						Name:        string(VirtualClusterProDistroAdmissionControl),
 						Hidden:      true, // this feature should be restricted for now
 					},
 					{
 						DisplayName: "Sync Patches",
-						Name:        string(VirtualClusterSyncPatches),
+						Name:        string(VirtualClusterProDistroSyncPatches),
 						Hidden:      hideVirtualClusterFeatures,
 					},
 					{
 						DisplayName: "Isolated Control Plane",
-						Name:        string(VirtualClusterIsolatedControlPlane),
+						Name:        string(VirtualClusterProDistroIsolatedControlPlane),
 						Hidden:      hideVirtualClusterFeatures,
 					},
 					{

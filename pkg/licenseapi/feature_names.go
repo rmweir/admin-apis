@@ -8,13 +8,14 @@ const (
 	DevPodRunners FeatureName = "devpod-runners"
 
 	// Virtual Clusters
-	VirtualCluster                      FeatureName = "vcluster"
-	VirtualClusterSleepMode             FeatureName = "vcluster-sleep-mode"
-	VirtualClusterAdmissionControl      FeatureName = "vcluster-admission-control"
-	VirtualClusterBuiltInCoreDNS        FeatureName = "vcluster-built-in-coredns"
-	VirtualClusterCentralHostPathMapper FeatureName = "vcluster-host-path-mapper"
-	VirtualClusterIsolatedControlPlane  FeatureName = "vcluster-isolated-control-plane"
-	VirtualClusterSyncPatches           FeatureName = "vcluster-sync-patches"
+	VirtualCluster                              FeatureName = "vcluster"
+	VirtualClusterSleepMode                     FeatureName = "vcluster-sleep-mode"
+	VirtualClusterCentralHostPathMapper         FeatureName = "vcluster-pro-distro-host-path-mapper"
+	VirtualClusterProDistroImage                FeatureName = "vcluster-pro-distro-image"
+	VirtualClusterProDistroAdmissionControl     FeatureName = "vcluster-pro-distro-admission-control"
+	VirtualClusterProDistroBuiltInCoreDNS       FeatureName = "vcluster-pro-distro-built-in-coredns"
+	VirtualClusterProDistroIsolatedControlPlane FeatureName = "vcluster-pro-distro-isolated-control-plane"
+	VirtualClusterProDistroSyncPatches          FeatureName = "vcluster-pro-distro-sync-patches"
 
 	// Spaces & Clusters
 	Cluster            FeatureName = "cluster"
@@ -51,7 +52,8 @@ const (
 	AdvancedUICustomizations FeatureName = "advanced-ui-customizations"
 	CustomBranding           FeatureName = "custom-branding"
 
-	// Utils - not to be directly used by the license service
+	// Internal Features - not to be directly used by the license service
+	SleepMode              FeatureName = "sleep-mode"
 	Metrics                FeatureName = "metrics"
 	ConnectLocalCluster    FeatureName = "connect-local-cluster"
 	PasswordAuthentication FeatureName = "password-auth"
