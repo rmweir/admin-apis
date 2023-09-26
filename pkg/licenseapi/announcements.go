@@ -10,5 +10,5 @@ type Announcement struct {
 	// Body contains the main message of the announcement in HTML format.
 	Body string `json:"body,omitempty"`
 	// Buttons to show alongside the announcement
-	Buttons []Button `json:"body,omitempty"`
+	Buttons []Button `json:"buttons,omitempty"`
 }
