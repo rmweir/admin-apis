@@ -23,9 +23,9 @@ type Feature struct {
 	// +optional
 	Hidden bool `json:"hidden,omitempty"`
 
-	// Entitled marks features that the product is entitled to enable
+	// Allowed marks features that the product is allowed to enable this feature
 	// +optional
-	Entitled bool `json:"entitled,omitempty"`
+	Allowed bool `json:"allowed,omitempty"`
 
 	// Enabled marks features that are currently enabled in the product
 	// +optional

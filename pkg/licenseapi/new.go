@@ -10,12 +10,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Kubernetes Management",
 				Name:        "kubernetes",
-				Limits: []ResourceQuantity{
-					{
-						Name:  "spaces",
-						Limit: 10,
-					},
-				},
 				Features: []Feature{
 					{
 						DisplayName: "Connected Clusters",

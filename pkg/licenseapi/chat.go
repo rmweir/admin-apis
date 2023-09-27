@@ -1,19 +1,19 @@
 package licenseapi
 
-// IntercomHashCreateInput is the required input data for generating a hash for a user for intercom.
+// ChatAuthCreateInput is the required input data for generating a hash for a user for in-product chat
 // +k8s:deepcopy-gen=true
-type IntercomHashCreateInput struct {
+type ChatAuthCreateInput struct {
 	*InstanceTokenAuth
 
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Username string `json:"username"`
+	Provider string `json:"provider,omitempty"`
+	Name     string `json:"name,omitempty"`
+	Email    string `json:"email,omitempty"`
+	Username string `json:"username,omitempty"`
 }
 
-// IntercomHashCreateOutput is the struct holding all information returned from "intercom
+// ChatAuthCreateOutput is the struct holding all information for chat auth
 // generate user hash" requests.
 // +k8s:deepcopy-gen=true
-type IntercomHashCreateOutput struct {
-	CurrentTime int64  `json:"currentTime"`
-	Hash        string `json:"hash"`
+type ChatAuthCreateOutput struct {
+	Hash string `json:"hash,omitempty"`
 }
