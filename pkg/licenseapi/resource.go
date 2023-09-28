@@ -12,7 +12,7 @@ type ResourceQuantity struct {
 	DisplayName string `json:"displayName,omitempty"`
 	// AdjustButton is the button to be shown for adjusting the limit (e.g. buying more seats)
 	// +optional
-	AdjustButton Button `json:"adjustButton,omitempty"`
+	AdjustButton *Button `json:"adjustButton,omitempty"`
 
 	// Limit specifies the limit for this resource.
 	// +optional

@@ -6,11 +6,11 @@ func New(product ProductName) *License {
 	hideDevPodFeatures := product != DevPodPro
 
 	return &License{
-		Modules: []Module{
+		Modules: []*Module{
 			{
 				DisplayName: "Kubernetes Management",
 				Name:        "kubernetes",
-				Features: []Feature{
+				Features: []*Feature{
 					{
 						DisplayName: "Connected Clusters",
 						Name:        string(Cluster),
@@ -41,7 +41,7 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "vCluster.Pro",
 				Name:        "vcluster",
-				Features: []Feature{
+				Features: []*Feature{
 					{
 						DisplayName: "Virtual Clusters",
 						Name:        string(VirtualCluster),
@@ -87,7 +87,7 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "DevPod.Pro",
 				Name:        "devpod",
-				Features: []Feature{
+				Features: []*Feature{
 					{
 						DisplayName: "Dev Environment Management",
 						Name:        string(DevPod),
@@ -103,7 +103,7 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Loft Platform",
 				Name:        "platform",
-				Features: []Feature{
+				Features: []*Feature{
 					{
 						DisplayName: "Single Sign-On",
 						Name:        string(SSOAuth),

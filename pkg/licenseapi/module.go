@@ -9,6 +9,6 @@ type Module struct {
 	// +optional
 	DisplayName string `json:"displayName,omitempty"`
 
-	Limits   []ResourceQuantity `json:"limits,omitempty"`
-	Features []Feature          `json:"features,omitempty"`
+	Limits   []*ResourceQuantity `json:"limits,omitempty"`
+	Features []*Feature          `json:"features,omitempty"`
 }

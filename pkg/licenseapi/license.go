@@ -18,14 +18,14 @@ type License struct {
 	DomainToken string `json:"domainToken"`
 	// Buttons is a slice of license server endpoints (buttons) that the Loft instance may need to
 	// hit. Each Button contains the display text and link for the front end to work with.
-	Buttons []Button `json:"buttons,omitempty"`
+	Buttons []*Button `json:"buttons,omitempty"`
 	// Announcements is a map string/string such that we can easily add any additional data without
 	// needing to change types. For now, we will use the keys "name" and "content".
 	// +optional
-	Announcements []Announcement `json:"announcement,omitempty"`
+	Announcements []*Announcement `json:"announcement,omitempty"`
 	// Modules is a list of modules.
 	// +optional
-	Modules []Module `json:"modules,omitempty"`
+	Modules []*Module `json:"modules,omitempty"`
 	// IsOffline indicates if the license is an offline license or not.
 	// +optional
 	IsOffline bool `json:"isOffline,omitempty"`
