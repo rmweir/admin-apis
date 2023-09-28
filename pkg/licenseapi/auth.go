@@ -12,6 +12,9 @@ type InstanceTokenAuth struct {
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type InstanceTokenClaims struct {
-	// Hash is the hash of the payload to be signed with this token
-	Hash string `json:"Hash"`
+	// URLHash is the hash of the url to be signed with this token
+	URLHash string `json:"url"`
+
+	// PayloadHash is the hash of the payload to be signed with this token
+	PayloadHash string `json:"payload"`
 }

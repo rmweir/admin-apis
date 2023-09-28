@@ -38,8 +38,7 @@ type License struct {
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type LicenseAPIRoutes struct {
-	Upgrade LicenseAPIRoute `json:"upgrade,omitempty"`
-	Docs    LicenseAPIRoute `json:"docs,omitempty"`
+	ChatAuth LicenseAPIRoute `json:"chatAuth,omitempty"`
 }
 
 // LicenseAPIRoute is a single route of the license api
