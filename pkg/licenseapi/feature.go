@@ -15,10 +15,6 @@ type Feature struct {
 	// +optional
 	Description string `json:"description,omitempty"`
 
-	// Internal marks internal features that should not be shown on the license view
-	// +optional
-	Internal bool `json:"hide,omitempty"`
-
 	// Hidden marks features that should be hidden, i.e. the UI hides nav links, components, etc. related to this feature
 	// +optional
 	Hidden bool `json:"hidden,omitempty"`
@@ -26,10 +22,6 @@ type Feature struct {
 	// Allowed marks features that the product is allowed to enable this feature
 	// +optional
 	Allowed bool `json:"allowed,omitempty"`
-
-	// Enabled marks features that are currently enabled in the product
-	// +optional
-	Enabled bool `json:"enabled,omitempty"`
 
 	// Compatibility contains a series of semver compatibility constraints
 	// +optional
