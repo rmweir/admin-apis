@@ -5,7 +5,7 @@ package licenseapi
 // information about the instance's current license.
 // +k8s:deepcopy-gen=true
 type InstanceCreateInput struct {
-	*InstanceTokenAuth
+	*InstanceTokenAuth `hash:"-"`
 
 	// Product is the product that is being used. Can be empty, loft, devpod-pro or vcluster-pro.
 	// This should NOT be a ProductName but a string to allow for downward compatibility
