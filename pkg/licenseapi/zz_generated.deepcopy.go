@@ -348,6 +348,7 @@ func (in *LicenseAPIRoute) DeepCopy() *LicenseAPIRoute {
 func (in *LicenseAPIRoutes) DeepCopyInto(out *LicenseAPIRoutes) {
 	*out = *in
 	out.ChatAuth = in.ChatAuth
+	out.ButtonAction = in.ButtonAction
 	return
 }
 

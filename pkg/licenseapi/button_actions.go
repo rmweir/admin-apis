@@ -6,6 +6,9 @@ package licenseapi
 type ButtonActionInput struct {
 	*InstanceTokenAuth `hash:"-"`
 
+	// URL is the url that the button leads to
+	URL string `json:"url"`
+
 	// +optional
 	ReturnURL string `json:"returnURL,omitempty"`
 }
