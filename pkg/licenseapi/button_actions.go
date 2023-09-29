@@ -4,7 +4,7 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type ButtonActionInput struct {
-	*InstanceTokenAuth `hash:"-"`
+	*InstanceTokenAuth `json:",omitempty" hash:"-"`
 
 	// URL is the url that the button leads to
 	URL string `json:"url"`
