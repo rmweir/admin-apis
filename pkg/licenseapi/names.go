@@ -22,10 +22,10 @@ const (
 
 // Limits
 const (
-	ConnectedClusterLimit ModuleName = "cluster"
-	VirtualClusterLimit   ModuleName = "virtual-cluster-instance"
-	DevEnvironmentLimit   ModuleName = "devpod-workspace-instance"
-	UserLimit             ModuleName = "user"
+	ConnectedClusterLimit LimitName = "cluster"
+	VirtualClusterLimit   LimitName = "virtual-cluster-instance"
+	DevEnvironmentLimit   LimitName = "devpod-workspace-instance"
+	UserLimit             LimitName = "user"
 )
 
 // Features
