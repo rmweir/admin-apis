@@ -24,7 +24,7 @@ const (
 const (
 	ConnectedCluster        ResourceName = "cluster"
 	VirtualClusterInstance  ResourceName = "virtual-cluster-instance"
-	Space                   ResourceName = "virtual-cluster-instance"
+	Space                   ResourceName = "space-instance"
 	DevPodWorkspaceInstance ResourceName = "devpod-workspace-instance"
 	User                    ResourceName = "user"
 )
