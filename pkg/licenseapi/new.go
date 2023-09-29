@@ -1,7 +1,8 @@
 package licenseapi
 
 func New(product ProductName) *License {
-	hideKubernetesFeatures := product != Loft
+	hideNamepaceFeatures := product != Loft
+	hideConnectedClusterFeatures := product != VClusterPro && product != Loft
 	hideVirtualClusterFeatures := product != VClusterPro && product != Loft
 	hideDevPodFeatures := product != DevPodPro
 
@@ -14,27 +15,27 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Connected Clusters",
 						Name:        string(Cluster),
-						Hidden:      hideKubernetesFeatures,
+						Hidden:      hideConnectedClusterFeatures,
 					},
 					{
 						DisplayName: "Cluster Access",
 						Name:        string(ClusterAccess),
-						Hidden:      hideKubernetesFeatures,
+						Hidden:      hideConnectedClusterFeatures,
 					},
 					{
 						DisplayName: "Cluster Role Management",
 						Name:        string(ClusterRoles),
-						Hidden:      hideKubernetesFeatures,
+						Hidden:      hideConnectedClusterFeatures,
 					},
 					{
 						DisplayName: "Namespace Management",
 						Name:        string(Namespace),
-						Hidden:      hideKubernetesFeatures,
+						Hidden:      hideNamepaceFeatures,
 					},
 					{
 						DisplayName: "Sleep Mode for Namespaces",
 						Name:        string(NamespaceSleepMode),
-						Hidden:      hideKubernetesFeatures,
+						Hidden:      hideNamepaceFeatures,
 					},
 				},
 			},
