@@ -10,7 +10,7 @@ func New(product ProductName) *License {
 		Modules: []*Module{
 			{
 				DisplayName: "Kubernetes Management",
-				Name:        "kubernetes",
+				Name:        string(KubernetesModule),
 				Features: []*Feature{
 					{
 						DisplayName: "Connected Clusters",
@@ -41,7 +41,7 @@ func New(product ProductName) *License {
 			},
 			{
 				DisplayName: "vCluster.Pro",
-				Name:        "vcluster",
+				Name:        string(VirtualClusterModule),
 				Features: []*Feature{
 					{
 						DisplayName: "Virtual Clusters",
@@ -87,7 +87,7 @@ func New(product ProductName) *License {
 			},
 			{
 				DisplayName: "DevPod.Pro",
-				Name:        "devpod",
+				Name:        string(DevPodModule),
 				Features: []*Feature{
 					{
 						DisplayName: "Dev Environment Management",
@@ -103,7 +103,7 @@ func New(product ProductName) *License {
 			},
 			{
 				DisplayName: "Loft Platform",
-				Name:        "platform",
+				Name:        string(PlatformModule),
 				Features: []*Feature{
 					{
 						DisplayName: "Single Sign-On",

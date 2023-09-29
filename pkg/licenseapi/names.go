@@ -1,7 +1,17 @@
 package licenseapi
 
+type ModuleName string
 type FeatureName string
 
+// Modules
+const (
+	KubernetesModule     ModuleName = "kubernetes"
+	VirtualClusterModule ModuleName = "vcluster"
+	DevPodModule         ModuleName = "devpod"
+	PlatformModule       ModuleName = "platform"
+)
+
+// Features
 const (
 	// DevPod
 	DevPod        FeatureName = "devpod"
