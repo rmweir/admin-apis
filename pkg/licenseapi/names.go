@@ -1,7 +1,16 @@
 package licenseapi
 
+type ProductName string
 type ModuleName string
+type LimitName string
 type FeatureName string
+
+// Products
+const (
+	Loft        ProductName = "loft"
+	VClusterPro ProductName = "vcluster-pro"
+	DevPodPro   ProductName = "devpod-pro"
+)
 
 // Modules
 const (
@@ -9,6 +18,14 @@ const (
 	VirtualClusterModule ModuleName = "vcluster"
 	DevPodModule         ModuleName = "devpod"
 	PlatformModule       ModuleName = "platform"
+)
+
+// Limits
+const (
+	ConnectedClusterLimit ModuleName = "cluster"
+	VirtualClusterLimit   ModuleName = "virtual-cluster-instance"
+	DevEnvironmentLimit   ModuleName = "devpod-workspace-instance"
+	UserLimit             ModuleName = "user"
 )
 
 // Features
@@ -20,12 +37,12 @@ const (
 	// Virtual Clusters
 	VirtualCluster                              FeatureName = "vcluster"
 	VirtualClusterSleepMode                     FeatureName = "vcluster-sleep-mode"
-	VirtualClusterCentralHostPathMapper         FeatureName = "vcluster-pro-distro-host-path-mapper"
-	VirtualClusterProDistroImage                FeatureName = "vcluster-pro-distro-image"
-	VirtualClusterProDistroAdmissionControl     FeatureName = "vcluster-pro-distro-admission-control"
-	VirtualClusterProDistroBuiltInCoreDNS       FeatureName = "vcluster-pro-distro-built-in-coredns"
-	VirtualClusterProDistroIsolatedControlPlane FeatureName = "vcluster-pro-distro-isolated-control-plane"
-	VirtualClusterProDistroSyncPatches          FeatureName = "vcluster-pro-distro-sync-patches"
+	VirtualClusterCentralHostPathMapper         FeatureName = "vcluster-host-path-mapper"
+	VirtualClusterProDistroImage                FeatureName = "vcp-distro-image"
+	VirtualClusterProDistroAdmissionControl     FeatureName = "vcp-distro-admission-control"
+	VirtualClusterProDistroBuiltInCoreDNS       FeatureName = "vcp-distro-built-in-coredns"
+	VirtualClusterProDistroIsolatedControlPlane FeatureName = "vcp-distro-isolated-cp"
+	VirtualClusterProDistroSyncPatches          FeatureName = "vcp-distro-sync-patches"
 
 	// Spaces & Clusters
 	Cluster            FeatureName = "cluster"

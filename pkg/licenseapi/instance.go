@@ -24,10 +24,8 @@ type InstanceCreateInput struct {
 
 	KubeSystemNamespaceUID string `json:"kubeSystemNamespace" form:"kubeSystemNamespaceUID" validate:"required"`
 
-	// AllocatedResources is a mapping of all resources (that we track, i.e. vcluster instances)
-	// deployed on the Loft instance. The Loft instance passes this information along when it
-	// performs it's checkins with the license server.
-	AllocatedResources map[string]ResourceQuantity `json:"quantities,omitempty" form:"quantities"`
+	// UsageData contains information about the number of resources used
+	UsageData map[string]ResourceCount `json:"usage,omitempty" form:"usage"`
 
 	// Config is the current configuration of the Loft instance checking in.
 	Config string `json:"config,omitempty" form:"config"`

@@ -11,6 +11,12 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Kubernetes Management",
 				Name:        string(KubernetesModule),
+				Limits: []*ResourceLimit{
+					{
+						DisplayName: "Connected Clusters",
+						Name:        string(ConnectedClusterLimit),
+					},
+				},
 				Features: []*Feature{
 					{
 						DisplayName: "Connected Clusters",
@@ -42,6 +48,12 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "vCluster.Pro",
 				Name:        string(VirtualClusterModule),
+				Limits: []*ResourceLimit{
+					{
+						DisplayName: "Virtual Clusters",
+						Name:        string(VirtualClusterLimit),
+					},
+				},
 				Features: []*Feature{
 					{
 						DisplayName: "Virtual Clusters",
@@ -88,6 +100,12 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "DevPod.Pro",
 				Name:        string(DevPodModule),
+				Limits: []*ResourceLimit{
+					{
+						DisplayName: "Dev Environments",
+						Name:        string(DevEnvironmentLimit),
+					},
+				},
 				Features: []*Feature{
 					{
 						DisplayName: "Dev Environment Management",
@@ -104,6 +122,12 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Loft Platform",
 				Name:        string(PlatformModule),
+				Limits: []*ResourceLimit{
+					{
+						DisplayName: "Users",
+						Name:        string(UserLimit),
+					},
+				},
 				Features: []*Feature{
 					{
 						DisplayName: "Single Sign-On",

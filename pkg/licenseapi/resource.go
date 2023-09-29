@@ -3,7 +3,7 @@ package licenseapi
 // ResourceQuantity represents an api resource and a quantity counter for that resource type (used for limits for example).
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
-type ResourceQuantity struct {
+type ResourceLimit struct {
 	// Name is the name of the resource.
 	// +optional
 	Name string `json:"name,omitempty"`
@@ -16,17 +16,10 @@ type ResourceQuantity struct {
 
 	// Limit specifies the limit for this resource.
 	// +optional
-	Limits *ResourceCount `json:"limits,omitempty"`
-	// Usage specifies the amount of resources currently existing.
-	// +optional
-	Usage *ResourceCount `json:"usage,omitempty"`
-
-	// BlockRequests specifies which requests the product should block when a limit is exceeded.
-	// +optional
-	BlockRequests []Request `json:"block,omitempty"`
+	Limit *ResourceCount `json:",omitempty"`
 }
 
-// ResourceQuantity shows number of existing, active and total number of resources created.
+// ResourceCount stores the number of existing, active and total number of resources created.
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type ResourceCount struct {
