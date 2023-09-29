@@ -2,7 +2,7 @@ package licenseapi
 
 type ProductName string
 type ModuleName string
-type LimitName string
+type ResourceName string
 type FeatureName string
 
 // Products
@@ -20,12 +20,13 @@ const (
 	PlatformModule       ModuleName = "platform"
 )
 
-// Limits
+// Resources (e.g. for limits)
 const (
-	ConnectedClusterLimit LimitName = "cluster"
-	VirtualClusterLimit   LimitName = "virtual-cluster-instance"
-	DevEnvironmentLimit   LimitName = "devpod-workspace-instance"
-	UserLimit             LimitName = "user"
+	ConnectedCluster        ResourceName = "cluster"
+	VirtualClusterInstance  ResourceName = "virtual-cluster-instance"
+	Space                   ResourceName = "virtual-cluster-instance"
+	DevPodWorkspaceInstance ResourceName = "devpod-workspace-instance"
+	User                    ResourceName = "user"
 )
 
 // Features

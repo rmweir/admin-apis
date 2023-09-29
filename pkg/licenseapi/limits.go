@@ -1,20 +1,20 @@
 package licenseapi
 
-var Limits = map[LimitName]*Limit{
-	ConnectedClusterLimit: {
+var Limits = map[ResourceName]*Limit{
+	ConnectedCluster: {
 		DisplayName: "Connected Clusters",
-		Name:        string(ConnectedClusterLimit),
+		Name:        string(ConnectedCluster),
 	},
-	VirtualClusterLimit: {
+	VirtualClusterInstance: {
 		DisplayName: "Virtual Clusters",
-		Name:        string(VirtualClusterLimit),
+		Name:        string(VirtualClusterInstance),
 	},
-	DevEnvironmentLimit: {
+	DevPodWorkspaceInstance: {
 		DisplayName: "Dev Environments",
-		Name:        string(DevEnvironmentLimit),
+		Name:        string(DevPodWorkspaceInstance),
 	},
-	UserLimit: {
+	User: {
 		DisplayName: "Users",
-		Name:        string(UserLimit),
+		Name:        string(User),
 	},
 }

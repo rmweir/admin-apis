@@ -12,7 +12,7 @@ func New(product ProductName) *License {
 				DisplayName: "Kubernetes Management",
 				Name:        string(KubernetesModule),
 				Limits: []*Limit{
-					Limits[ConnectedClusterLimit],
+					Limits[ConnectedCluster],
 				},
 				Features: []*Feature{
 					{
@@ -46,7 +46,7 @@ func New(product ProductName) *License {
 				DisplayName: "vCluster.Pro",
 				Name:        string(VirtualClusterModule),
 				Limits: []*Limit{
-					Limits[VirtualClusterLimit],
+					Limits[VirtualClusterInstance],
 				},
 				Features: []*Feature{
 					{
@@ -95,7 +95,7 @@ func New(product ProductName) *License {
 				DisplayName: "DevPod.Pro",
 				Name:        string(DevPodModule),
 				Limits: []*Limit{
-					Limits[DevEnvironmentLimit],
+					Limits[DevPodWorkspaceInstance],
 				},
 				Features: []*Feature{
 					{
@@ -114,7 +114,7 @@ func New(product ProductName) *License {
 				DisplayName: "Loft Platform",
 				Name:        string(PlatformModule),
 				Limits: []*Limit{
-					Limits[UserLimit],
+					Limits[User],
 				},
 				Features: []*Feature{
 					{
