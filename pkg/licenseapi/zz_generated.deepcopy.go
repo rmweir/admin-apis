@@ -200,9 +200,16 @@ func (in *InstanceCreateInput) DeepCopyInto(out *InstanceCreateInput) {
 		*out = new(InstanceTokenAuth)
 		**out = **in
 	}
-	if in.UsageData != nil {
-		in, out := &in.UsageData, &out.UsageData
+	if in.ResourceUsage != nil {
+		in, out := &in.ResourceUsage, &out.ResourceUsage
 		*out = make(map[string]ResourceCount, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
+	if in.FeatureUsage != nil {
+		in, out := &in.FeatureUsage, &out.FeatureUsage
+		*out = make(map[string]bool, len(*in))
 		for key, val := range *in {
 			(*out)[key] = val
 		}

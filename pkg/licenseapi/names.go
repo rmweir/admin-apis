@@ -3,6 +3,7 @@ package licenseapi
 type ProductName string
 type ModuleName string
 type ResourceName string
+type FeatureStatus string
 type FeatureName string
 
 // Products
@@ -27,6 +28,13 @@ const (
 	SpaceInstance           ResourceName = "space-instance"
 	DevPodWorkspaceInstance ResourceName = "devpod-workspace-instance"
 	User                    ResourceName = "user"
+)
+
+// Feature Stati
+const (
+	FeatureStatusAllowed    FeatureStatus = "allowed"
+	FeatureStatusPreview    FeatureStatus = "preview"
+	FeatureStatusDisallowed FeatureStatus = ""
 )
 
 // Features

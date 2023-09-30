@@ -1,13 +1,5 @@
 package licenseapi
 
-type FeatureStatus string
-
-const (
-	FeatureStatusAllowed    FeatureStatus = "allowed"
-	FeatureStatusPreview    FeatureStatus = "preview"
-	FeatureStatusDisallowed FeatureStatus = ""
-)
-
 // Feature contains information regarding to a feature
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true

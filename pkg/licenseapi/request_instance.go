@@ -24,11 +24,11 @@ type InstanceCreateInput struct {
 
 	KubeSystemNamespaceUID string `json:"kubeSystemNamespace" form:"kubeSystemNamespaceUID" validate:"required"`
 
-	// UsageData contains information about the number of resources used
-	UsageData map[string]ResourceCount `json:"usage,omitempty" form:"usage"`
+	// ResourceUsage contains information about the number of resources used
+	ResourceUsage map[string]ResourceCount `json:"resources,omitempty" form:"resources"`
 
-	// Config is the current configuration of the Loft instance checking in.
-	Config string `json:"config,omitempty" form:"config"`
+	// FeatureUse contains information about what features are used
+	FeatureUsage map[string]bool `json:"features,omitempty" form:"features"`
 }
 
 // InstanceCreateOutput is the struct holding all information returned from "instance create"
