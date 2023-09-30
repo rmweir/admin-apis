@@ -16,7 +16,7 @@ type Limit struct {
 
 	// Limit specifies the limit for this resource.
 	// +optional
-	Quantity *ResourceCount `json:",omitempty"`
+	Quantity *ResourceCount `json:"quantity,omitempty"`
 }
 
 // ResourceCount stores the number of existing, active and total number of resources created.
