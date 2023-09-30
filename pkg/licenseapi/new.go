@@ -1,10 +1,25 @@
 package licenseapi
 
 func New(product ProductName) *License {
-	hideNamepaceFeatures := product != Loft
-	hideConnectedClusterFeatures := product != VClusterPro && product != Loft
-	hideVirtualClusterFeatures := product != VClusterPro && product != Loft
-	hideDevPodFeatures := product != DevPodPro
+	connectedClusterStatus := string(FeatureStatusAllowed)
+	if product != VClusterPro && product != Loft {
+		connectedClusterStatus = string(FeatureStatusDisallowed)
+	}
+
+	namespaceStatus := string(FeatureStatusAllowed)
+	if product != Loft {
+		namespaceStatus = string(FeatureStatusDisallowed)
+	}
+
+	virtualClusterStatus := string(FeatureStatusAllowed)
+	if product != VClusterPro && product != Loft {
+		virtualClusterStatus = string(FeatureStatusDisallowed)
+	}
+
+	devpodStatus := string(FeatureStatusAllowed)
+	if product != DevPodPro {
+		devpodStatus = string(FeatureStatusDisallowed)
+	}
 
 	return &License{
 		Modules: []*Module{
@@ -18,27 +33,27 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Connected Clusters",
 						Name:        string(Cluster),
-						Hidden:      hideConnectedClusterFeatures,
+						Status:      connectedClusterStatus,
 					},
 					{
 						DisplayName: "Cluster Access",
 						Name:        string(ClusterAccess),
-						Hidden:      hideConnectedClusterFeatures,
+						Status:      connectedClusterStatus,
 					},
 					{
 						DisplayName: "Cluster Role Management",
 						Name:        string(ClusterRoles),
-						Hidden:      hideConnectedClusterFeatures,
+						Status:      connectedClusterStatus,
 					},
 					{
 						DisplayName: "Namespace Management",
 						Name:        string(Namespace),
-						Hidden:      hideNamepaceFeatures,
+						Status:      namespaceStatus,
 					},
 					{
 						DisplayName: "Sleep Mode for Namespaces",
 						Name:        string(NamespaceSleepMode),
-						Hidden:      hideNamepaceFeatures,
+						Status:      namespaceStatus,
 					},
 				},
 			},
@@ -52,42 +67,43 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Virtual Clusters",
 						Name:        string(VirtualCluster),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Sleep Mode for Virtual Clusters",
 						Name:        string(VirtualClusterSleepMode),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Security-Hardened vCluster Image",
 						Name:        string(VirtualClusterProDistroImage),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Built-In CoreDNS",
 						Name:        string(VirtualClusterProDistroBuiltInCoreDNS),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Virtual Admission Control",
 						Name:        string(VirtualClusterProDistroAdmissionControl),
-						Hidden:      true, // this feature should be restricted for now
+						// this feature should be restricted for now
+						Status: string(FeatureStatusDisallowed),
 					},
 					{
 						DisplayName: "Sync Patches",
 						Name:        string(VirtualClusterProDistroSyncPatches),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Isolated Control Plane",
 						Name:        string(VirtualClusterProDistroIsolatedControlPlane),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 					{
 						DisplayName: "Central HostPath Mapper",
 						Name:        string(VirtualClusterCentralHostPathMapper),
-						Hidden:      hideVirtualClusterFeatures,
+						Status:      virtualClusterStatus,
 					},
 				},
 			},
@@ -101,12 +117,12 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Dev Environment Management",
 						Name:        string(DevPod),
-						Hidden:      hideDevPodFeatures,
+						Status:      devpodStatus,
 					},
 					{
 						DisplayName: "DevPod Runners",
 						Name:        string(DevPodRunners),
-						Hidden:      hideDevPodFeatures,
+						Status:      devpodStatus,
 					},
 				},
 			},
@@ -136,7 +152,6 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Loft as OIDC Provider",
 						Name:        string(OIDCProvider),
-						Hidden:      true,
 					},
 					{
 						DisplayName: "Apps",

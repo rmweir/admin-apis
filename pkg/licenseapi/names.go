@@ -81,7 +81,6 @@ const (
 	CustomBranding           FeatureName = "custom-branding"
 
 	// Internal Features - not to be directly used by the license service
-	SleepMode              FeatureName = "sleep-mode"
 	Metrics                FeatureName = "metrics"
 	ConnectLocalCluster    FeatureName = "connect-local-cluster"
 	PasswordAuthentication FeatureName = "password-auth"

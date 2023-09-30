@@ -1,5 +1,13 @@
 package licenseapi
 
+type FeatureStatus string
+
+const (
+	FeatureStatusAllowed    FeatureStatus = "allowed"
+	FeatureStatusPreview    FeatureStatus = "preview"
+	FeatureStatusDisallowed FeatureStatus = ""
+)
+
 // Feature contains information regarding to a feature
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
@@ -15,13 +23,9 @@ type Feature struct {
 	// +optional
 	Description string `json:"description,omitempty"`
 
-	// Hidden marks features that should be hidden, i.e. the UI hides nav links, components, etc. related to this feature
+	// Status shows the status of the feature (see type FeatureStatus)
 	// +optional
-	Hidden bool `json:"hidden,omitempty"`
-
-	// Allowed marks features that the product is allowed to enable this feature
-	// +optional
-	Allowed bool `json:"allowed,omitempty"`
+	Status string `json:"status,omitempty"`
 
 	// Compatibility contains a series of semver compatibility constraints
 	// +optional
