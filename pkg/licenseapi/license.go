@@ -28,7 +28,7 @@ type License struct {
 	Modules []*Module `json:"modules,omitempty"`
 	// BlockRequests specifies which requests the product should block when a limit is exceeded.
 	// +optional
-	BlockRequests []Request `json:"block,omitempty"`
+	BlockRequests []BlockRequest `json:"block,omitempty"`
 	// IsOffline indicates if the license is an offline license or not.
 	// +optional
 	IsOffline bool `json:"isOffline,omitempty"`
