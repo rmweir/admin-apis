@@ -1,3 +1,3 @@
-module github.com/loft-sh/license-api
+module github.com/loft-sh/admin-apis
 
 go 1.21.1

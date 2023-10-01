@@ -20,6 +20,8 @@ var Limits = map[ResourceName]*Limit{
 }
 
 func New(product ProductName) *License {
+	allowedStatus := string(FeatureStatusAllowed)
+
 	connectedClusterStatus := string(FeatureStatusAllowed)
 	if product != VClusterPro && product != Loft {
 		connectedClusterStatus = string(FeatureStatusDisallowed)
@@ -155,66 +157,82 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Single Sign-On",
 						Name:        string(SSOAuth),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Multiple SSO Providers",
 						Name:        string(MultipleSSOProviders),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Audit Logging",
 						Name:        string(AuditLogging),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Automatic Auth For Ingresses",
 						Name:        string(AutomaticIngressAuth),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Loft as OIDC Provider",
 						Name:        string(OIDCProvider),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Apps",
 						Name:        string(Apps),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Template Versioning",
 						Name:        string(TemplateVersioning),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Secrets Management",
 						Name:        string(Secrets),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Secrets Encryption",
 						Name:        string(SecretEncryption),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Vault Integration",
 						Name:        string(VaultIntegration),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Argo Integration",
 						Name:        string(ArgoIntegration),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "High-Availability Mode",
 						Name:        string(HighAvailabilityMode),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Multi-Region Mode",
 						Name:        string(MultiRegionMode),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Air-Gapped Mode",
 						Name:        string(AirGappedMode),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Custom Branding",
 						Name:        string(CustomBranding),
+						Status:      allowedStatus,
 					},
 					{
 						DisplayName: "Advanced UI Customizations",
 						Name:        string(AdvancedUICustomizations),
+						Status:      allowedStatus,
 					},
 				},
 			},
