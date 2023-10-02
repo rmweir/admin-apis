@@ -108,8 +108,7 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Virtual Admission Control",
 						Name:        string(VirtualClusterProDistroAdmissionControl),
-						// this feature should be restricted for now
-						Status: string(FeatureStatusDisallowed),
+						Status:      string(FeatureStatusHidden),
 					},
 					{
 						DisplayName: "Sync Patches",
@@ -138,11 +137,6 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Dev Environment Management",
 						Name:        string(DevPod),
-						Status:      devpodStatus,
-					},
-					{
-						DisplayName: "DevPod Runners",
-						Name:        string(DevPodRunners),
 						Status:      devpodStatus,
 					},
 				},

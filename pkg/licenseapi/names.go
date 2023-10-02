@@ -30,18 +30,18 @@ const (
 	User                    ResourceName = "user"
 )
 
-// Feature Stati
+// Feature Status
 const (
 	FeatureStatusAllowed    FeatureStatus = "allowed"
 	FeatureStatusPreview    FeatureStatus = "preview"
+	FeatureStatusHidden     FeatureStatus = "hidden"
 	FeatureStatusDisallowed FeatureStatus = ""
 )
 
 // Features
 const (
 	// DevPod
-	DevPod        FeatureName = "devpod"
-	DevPodRunners FeatureName = "devpod-runners"
+	DevPod FeatureName = "devpod"
 
 	// Virtual Clusters
 	VirtualCluster                              FeatureName = "vcluster"
@@ -90,6 +90,7 @@ const (
 
 	// Internal Features - not to be directly used by the license service
 	Metrics                FeatureName = "metrics"
+	Runners                FeatureName = "runners"
 	ConnectLocalCluster    FeatureName = "connect-local-cluster"
 	PasswordAuthentication FeatureName = "password-auth"
 )
