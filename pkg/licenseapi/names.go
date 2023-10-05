@@ -29,12 +29,12 @@ const (
 
 // Resources (e.g. for limits)
 const (
-	ConnectedCluster        ResourceName = "connected-cluster"
-	VirtualClusterInstance  ResourceName = "virtual-cluster-instance"
-	SpaceInstance           ResourceName = "space-instance"
-	DevPodWorkspaceInstance ResourceName = "devpod-workspace-instance"
-	User                    ResourceName = "user"
-	Instance                ResourceName = "instance"
+	ConnectedClusterLimit        ResourceName = "connected-cluster"
+	VirtualClusterInstanceLimit  ResourceName = "virtual-cluster-instance"
+	SpaceInstanceLimit           ResourceName = "space-instance"
+	DevPodWorkspaceInstanceLimit ResourceName = "devpod-workspace-instance"
+	UserLimit                    ResourceName = "user"
+	InstanceLimit                ResourceName = "instance"
 )
 
 // Trial Status

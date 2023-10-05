@@ -1,21 +1,25 @@
 package licenseapi
 
 var Limits = map[ResourceName]*Limit{
-	ConnectedCluster: {
+	ConnectedClusterLimit: {
 		DisplayName: "Connected Clusters",
-		Name:        string(ConnectedCluster),
+		Name:        string(ConnectedClusterLimit),
 	},
-	VirtualClusterInstance: {
+	VirtualClusterInstanceLimit: {
 		DisplayName: "Virtual Clusters",
-		Name:        string(VirtualClusterInstance),
+		Name:        string(VirtualClusterInstanceLimit),
 	},
-	DevPodWorkspaceInstance: {
+	DevPodWorkspaceInstanceLimit: {
 		DisplayName: "Dev Environments",
-		Name:        string(DevPodWorkspaceInstance),
+		Name:        string(DevPodWorkspaceInstanceLimit),
 	},
-	User: {
+	UserLimit: {
 		DisplayName: "Users",
-		Name:        string(User),
+		Name:        string(UserLimit),
+	},
+	InstanceLimit: {
+		DisplayName: "Instances",
+		Name:        string(InstanceLimit),
 	},
 }
 
@@ -48,7 +52,7 @@ func New(product ProductName) *License {
 				DisplayName: "Virtual Clusters",
 				Name:        string(VirtualClusterModule),
 				Limits: []*Limit{
-					Limits[VirtualClusterInstance],
+					Limits[VirtualClusterInstanceLimit],
 				},
 				Features: []*Feature{
 					{
@@ -71,9 +75,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "vCluster.Pro Distro",
 				Name:        string(VirtualClusterModule),
-				Limits: []*Limit{
-					Limits[VirtualClusterInstance],
-				},
 				Features: []*Feature{
 					{
 						DisplayName: "Security-Hardened vCluster Image",
@@ -106,7 +107,7 @@ func New(product ProductName) *License {
 				DisplayName: "Dev Environments",
 				Name:        string(DevPodModule),
 				Limits: []*Limit{
-					Limits[DevPodWorkspaceInstance],
+					Limits[DevPodWorkspaceInstanceLimit],
 				},
 				Features: []*Feature{
 					{
@@ -119,9 +120,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Kubernetes Namespaces",
 				Name:        string(KubernetesNamespaceModule),
-				Limits: []*Limit{
-					Limits[ConnectedCluster],
-				},
 				Features: []*Feature{
 					{
 						DisplayName: "Namespace Management",
@@ -139,7 +137,7 @@ func New(product ProductName) *License {
 				DisplayName: "Kubernetes Clusters",
 				Name:        string(KubernetesClusterModule),
 				Limits: []*Limit{
-					Limits[ConnectedCluster],
+					Limits[ConnectedClusterLimit],
 				},
 				Features: []*Feature{
 					{
@@ -163,7 +161,7 @@ func New(product ProductName) *License {
 				DisplayName: "Authentication & Audit Logging",
 				Name:        string(AuthModule),
 				Limits: []*Limit{
-					Limits[User],
+					Limits[UserLimit],
 				},
 				Features: []*Feature{
 					{
@@ -196,9 +194,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Templating & GitOps",
 				Name:        string(TemplatingModule),
-				Limits: []*Limit{
-					Limits[User],
-				},
 				Features: []*Feature{
 					{
 						DisplayName: "Apps",
@@ -220,9 +215,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "Secrets Management",
 				Name:        string(SecretsModule),
-				Limits: []*Limit{
-					Limits[User],
-				},
 				Features: []*Feature{
 					{
 						DisplayName: "Secrets Sync",
@@ -245,7 +237,7 @@ func New(product ProductName) *License {
 				DisplayName: "Deployment Modes",
 				Name:        string(DeploymentModesModule),
 				Limits: []*Limit{
-					Limits[User],
+					Limits[InstanceLimit],
 				},
 				Features: []*Feature{
 					{
@@ -268,9 +260,6 @@ func New(product ProductName) *License {
 			{
 				DisplayName: "UI Customization",
 				Name:        string(UIModule),
-				Limits: []*Limit{
-					Limits[User],
-				},
 				Features: []*Feature{
 					{
 						DisplayName: "Custom Branding",
