@@ -18,4 +18,8 @@ type Trial struct {
 	// End is the unix timestamp stating when the trial will end or ended
 	// +optional
 	End int64 `json:"end,omitempty"`
+
+	// Status is the status of this trial
+	// +optional
+	Status string `json:"status,omitempty"`
 }
