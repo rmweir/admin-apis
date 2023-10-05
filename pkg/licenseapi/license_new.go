@@ -142,7 +142,7 @@ func New(product ProductName) *License {
 				Features: []*Feature{
 					{
 						DisplayName: "Connected Clusters",
-						Name:        string(Cluster),
+						Name:        string(ConnectedClusters),
 						Status:      connectedClusterStatus,
 					},
 					{

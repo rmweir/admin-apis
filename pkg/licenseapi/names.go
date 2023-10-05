@@ -56,7 +56,7 @@ const (
 	DevPod FeatureName = "devpod"
 
 	// Virtual Clusters
-	VirtualCluster                              FeatureName = "vcluster"
+	VirtualCluster                              FeatureName = "vclusters"
 	VirtualClusterSleepMode                     FeatureName = "vcluster-sleep-mode"
 	VirtualClusterCentralHostPathMapper         FeatureName = "vcluster-host-path-mapper"
 	VirtualClusterProDistroImage                FeatureName = "vcp-distro-image"
@@ -66,10 +66,10 @@ const (
 	VirtualClusterProDistroSyncPatches          FeatureName = "vcp-distro-sync-patches"
 
 	// Spaces & Clusters
-	Cluster            FeatureName = "cluster"
+	ConnectedClusters  FeatureName = "connected-clusters"
 	ClusterAccess      FeatureName = "cluster-access"
 	ClusterRoles       FeatureName = "cluster-roles"
-	Namespace          FeatureName = "namespace"
+	Namespace          FeatureName = "namespaces"
 	NamespaceSleepMode FeatureName = "namespace-sleep-mode"
 
 	// Auth-Related Features
