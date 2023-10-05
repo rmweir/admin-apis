@@ -26,6 +26,9 @@ type License struct {
 	// Modules is a list of modules.
 	// +optional
 	Modules []*Module `json:"modules,omitempty"`
+	// Trials is a list of trials.
+	// +optional
+	Trials []*Trial `json:"trials,omitempty"`
 	// BlockRequests specifies which requests the product should block when a limit is exceeded.
 	// +optional
 	BlockRequests []BlockRequest `json:"block,omitempty"`
