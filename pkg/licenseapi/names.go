@@ -16,9 +16,10 @@ const (
 
 // Modules
 const (
-	KubernetesNamespaceModule ModuleName = "k8s-namespacse"
+	KubernetesNamespaceModule ModuleName = "k8s-namespaces"
 	KubernetesClusterModule   ModuleName = "k8s-clusters"
 	VirtualClusterModule      ModuleName = "vclusters"
+	VClusterProDistroModule   ModuleName = "vcluster-pro-distro"
 	DevPodModule              ModuleName = "devpod"
 	AuthModule                ModuleName = "auth"
 	TemplatingModule          ModuleName = "templating"

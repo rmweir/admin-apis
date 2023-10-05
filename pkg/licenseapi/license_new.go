@@ -74,7 +74,7 @@ func New(product ProductName) *License {
 			},
 			{
 				DisplayName: "vCluster.Pro Distro",
-				Name:        string(VirtualClusterModule),
+				Name:        string(VClusterProDistroModule),
 				Features: []*Feature{
 					{
 						DisplayName: "Security-Hardened vCluster Image",
