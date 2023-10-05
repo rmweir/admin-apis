@@ -1,22 +1,27 @@
 package licenseapi
 
-// ButtonActionInput defines the payload that needs to be sent to a button's action URL
+// GenericRequestInput defines the payload that needs to be sent to a button's action URL
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
-type ButtonActionInput struct {
+type GenericRequestInput struct {
 	*InstanceTokenAuth `json:",omitempty" hash:"-"`
 
 	// URL is the url that the button leads to
 	URL string `json:"url"`
 
+	// Payload provides the json encoded payload
+	// +optional
+	Payload string `json:"payload"`
+
+	// ReturnURL is the url from which the request is initiated
 	// +optional
 	ReturnURL string `json:"returnURL,omitempty"`
 }
 
-// ButtonActionOutput specifies the response
+// GenericRequestOutput specifies the response
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
-type ButtonActionOutput struct {
+type GenericRequestOutput struct {
 	// RedirectURL to redirect the user to.
 	// +optional
 	RedirectURL string `json:"redirectURL,omitempty"`

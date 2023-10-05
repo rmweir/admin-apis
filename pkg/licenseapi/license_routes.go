@@ -4,8 +4,7 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type LicenseAPIRoutes struct {
-	ChatAuth     LicenseAPIRoute `json:"chatAuth,omitempty"`
-	ButtonAction LicenseAPIRoute `json:"buttonAction,omitempty"`
+	ChatAuth LicenseAPIRoute `json:"chatAuth,omitempty"`
 }
 
 // LicenseAPIRoute is a single route of the license api
