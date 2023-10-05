@@ -6,12 +6,9 @@ package licenseapi
 type GenericRequestInput struct {
 	*InstanceTokenAuth `json:",omitempty" hash:"-"`
 
-	// URL is the url that the button leads to
-	URL string `json:"url"`
-
 	// Payload provides the json encoded payload
 	// +optional
-	Payload string `json:"payload"`
+	Payload string `json:"payload,omitempty"`
 
 	// ReturnURL is the url from which the request is initiated
 	// +optional
