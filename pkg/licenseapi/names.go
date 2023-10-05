@@ -16,10 +16,15 @@ const (
 
 // Modules
 const (
-	KubernetesModule     ModuleName = "kubernetes"
-	VirtualClusterModule ModuleName = "vcluster"
-	DevPodModule         ModuleName = "devpod"
-	PlatformModule       ModuleName = "platform"
+	KubernetesNamespaceModule ModuleName = "k8s-namespacse"
+	KubernetesClusterModule   ModuleName = "k8s-clusters"
+	VirtualClusterModule      ModuleName = "vclusters"
+	DevPodModule              ModuleName = "devpod"
+	AuthModule                ModuleName = "auth"
+	TemplatingModule          ModuleName = "templating"
+	SecretsModule             ModuleName = "secrets"
+	DeploymentModesModule     ModuleName = "deployment-modes"
+	UIModule                  ModuleName = "ui"
 )
 
 // Resources (e.g. for limits)

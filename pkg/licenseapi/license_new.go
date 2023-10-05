@@ -45,48 +45,14 @@ func New(product ProductName) *License {
 	return &License{
 		Modules: []*Module{
 			{
-				DisplayName: "Kubernetes Management",
-				Name:        string(KubernetesModule),
-				Limits: []*Limit{
-					Limits[ConnectedCluster],
-				},
-				Features: []*Feature{
-					{
-						DisplayName: "Connected Clusters",
-						Name:        string(Cluster),
-						Status:      connectedClusterStatus,
-					},
-					{
-						DisplayName: "Cluster Access",
-						Name:        string(ClusterAccess),
-						Status:      connectedClusterStatus,
-					},
-					{
-						DisplayName: "Cluster Role Management",
-						Name:        string(ClusterRoles),
-						Status:      connectedClusterStatus,
-					},
-					{
-						DisplayName: "Namespace Management",
-						Name:        string(Namespace),
-						Status:      namespaceStatus,
-					},
-					{
-						DisplayName: "Sleep Mode for Namespaces",
-						Name:        string(NamespaceSleepMode),
-						Status:      namespaceStatus,
-					},
-				},
-			},
-			{
-				DisplayName: "vCluster.Pro",
+				DisplayName: "Virtual Clusters",
 				Name:        string(VirtualClusterModule),
 				Limits: []*Limit{
 					Limits[VirtualClusterInstance],
 				},
 				Features: []*Feature{
 					{
-						DisplayName: "Virtual Clusters",
+						DisplayName: "Virtual Cluster Management",
 						Name:        string(VirtualCluster),
 						Status:      virtualClusterStatus,
 					},
@@ -95,6 +61,20 @@ func New(product ProductName) *License {
 						Name:        string(VirtualClusterSleepMode),
 						Status:      virtualClusterStatus,
 					},
+					{
+						DisplayName: "Central HostPath Mapper",
+						Name:        string(VirtualClusterCentralHostPathMapper),
+						Status:      virtualClusterStatus,
+					},
+				},
+			},
+			{
+				DisplayName: "vCluster.Pro Distro",
+				Name:        string(VirtualClusterModule),
+				Limits: []*Limit{
+					Limits[VirtualClusterInstance],
+				},
+				Features: []*Feature{
 					{
 						DisplayName: "Security-Hardened vCluster Image",
 						Name:        string(VirtualClusterProDistroImage),
@@ -120,15 +100,10 @@ func New(product ProductName) *License {
 						Name:        string(VirtualClusterProDistroIsolatedControlPlane),
 						Status:      virtualClusterStatus,
 					},
-					{
-						DisplayName: "Central HostPath Mapper",
-						Name:        string(VirtualClusterCentralHostPathMapper),
-						Status:      virtualClusterStatus,
-					},
 				},
 			},
 			{
-				DisplayName: "DevPod.Pro",
+				DisplayName: "Dev Environments",
 				Name:        string(DevPodModule),
 				Limits: []*Limit{
 					Limits[DevPodWorkspaceInstance],
@@ -142,8 +117,51 @@ func New(product ProductName) *License {
 				},
 			},
 			{
-				DisplayName: "Loft Platform",
-				Name:        string(PlatformModule),
+				DisplayName: "Kubernetes Namespaces",
+				Name:        string(KubernetesNamespaceModule),
+				Limits: []*Limit{
+					Limits[ConnectedCluster],
+				},
+				Features: []*Feature{
+					{
+						DisplayName: "Namespace Management",
+						Name:        string(Namespace),
+						Status:      namespaceStatus,
+					},
+					{
+						DisplayName: "Sleep Mode for Namespaces",
+						Name:        string(NamespaceSleepMode),
+						Status:      namespaceStatus,
+					},
+				},
+			},
+			{
+				DisplayName: "Kubernetes Clusters",
+				Name:        string(KubernetesClusterModule),
+				Limits: []*Limit{
+					Limits[ConnectedCluster],
+				},
+				Features: []*Feature{
+					{
+						DisplayName: "Connected Clusters",
+						Name:        string(Cluster),
+						Status:      connectedClusterStatus,
+					},
+					{
+						DisplayName: "Cluster Access",
+						Name:        string(ClusterAccess),
+						Status:      connectedClusterStatus,
+					},
+					{
+						DisplayName: "Cluster Role Management",
+						Name:        string(ClusterRoles),
+						Status:      connectedClusterStatus,
+					},
+				},
+			},
+			{
+				DisplayName: "Authentication & Audit Logging",
+				Name:        string(AuthModule),
 				Limits: []*Limit{
 					Limits[User],
 				},
@@ -151,11 +169,6 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Single Sign-On",
 						Name:        string(SSOAuth),
-						Status:      allowedStatus,
-					},
-					{
-						DisplayName: "Multiple SSO Providers",
-						Name:        string(MultipleSSOProviders),
 						Status:      allowedStatus,
 					},
 					{
@@ -174,6 +187,20 @@ func New(product ProductName) *License {
 						Status:      allowedStatus,
 					},
 					{
+						DisplayName: "Multiple SSO Providers",
+						Name:        string(MultipleSSOProviders),
+						Status:      allowedStatus,
+					},
+				},
+			},
+			{
+				DisplayName: "Templating & GitOps",
+				Name:        string(TemplatingModule),
+				Limits: []*Limit{
+					Limits[User],
+				},
+				Features: []*Feature{
+					{
 						DisplayName: "Apps",
 						Name:        string(Apps),
 						Status:      allowedStatus,
@@ -184,7 +211,21 @@ func New(product ProductName) *License {
 						Status:      allowedStatus,
 					},
 					{
-						DisplayName: "Secrets Management",
+						DisplayName: "Argo Integration",
+						Name:        string(ArgoIntegration),
+						Status:      allowedStatus,
+					},
+				},
+			},
+			{
+				DisplayName: "Secrets Management",
+				Name:        string(SecretsModule),
+				Limits: []*Limit{
+					Limits[User],
+				},
+				Features: []*Feature{
+					{
+						DisplayName: "Secrets Sync",
 						Name:        string(Secrets),
 						Status:      allowedStatus,
 					},
@@ -194,15 +235,19 @@ func New(product ProductName) *License {
 						Status:      allowedStatus,
 					},
 					{
-						DisplayName: "Vault Integration",
+						DisplayName: "HashiCorp Vault Integration",
 						Name:        string(VaultIntegration),
 						Status:      allowedStatus,
 					},
-					{
-						DisplayName: "Argo Integration",
-						Name:        string(ArgoIntegration),
-						Status:      allowedStatus,
-					},
+				},
+			},
+			{
+				DisplayName: "Deployment Modes",
+				Name:        string(DeploymentModesModule),
+				Limits: []*Limit{
+					Limits[User],
+				},
+				Features: []*Feature{
 					{
 						DisplayName: "High-Availability Mode",
 						Name:        string(HighAvailabilityMode),
@@ -218,6 +263,15 @@ func New(product ProductName) *License {
 						Name:        string(AirGappedMode),
 						Status:      allowedStatus,
 					},
+				},
+			},
+			{
+				DisplayName: "UI Customization",
+				Name:        string(UIModule),
+				Limits: []*Limit{
+					Limits[User],
+				},
+				Features: []*Feature{
 					{
 						DisplayName: "Custom Branding",
 						Name:        string(CustomBranding),
