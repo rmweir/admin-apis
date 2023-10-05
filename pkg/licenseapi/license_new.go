@@ -24,24 +24,24 @@ var Limits = map[ResourceName]*Limit{
 }
 
 func New(product ProductName) *License {
-	allowedStatus := string(FeatureStatusAllowed)
+	allowedStatus := string(FeatureStatusActive)
 
-	connectedClusterStatus := string(FeatureStatusAllowed)
+	connectedClusterStatus := string(FeatureStatusActive)
 	if product != VClusterPro && product != Loft {
 		connectedClusterStatus = string(FeatureStatusDisallowed)
 	}
 
-	namespaceStatus := string(FeatureStatusAllowed)
+	namespaceStatus := string(FeatureStatusActive)
 	if product != Loft {
 		namespaceStatus = string(FeatureStatusDisallowed)
 	}
 
-	virtualClusterStatus := string(FeatureStatusAllowed)
+	virtualClusterStatus := string(FeatureStatusActive)
 	if product != VClusterPro && product != Loft {
 		virtualClusterStatus = string(FeatureStatusDisallowed)
 	}
 
-	devpodStatus := string(FeatureStatusAllowed)
+	devpodStatus := string(FeatureStatusActive)
 	if product != DevPodPro {
 		devpodStatus = string(FeatureStatusDisallowed)
 	}

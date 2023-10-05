@@ -45,8 +45,9 @@ const (
 
 // Feature Status
 const (
-	FeatureStatusAllowed    FeatureStatus = "allowed"
+	FeatureStatusActive     FeatureStatus = "active"
 	FeatureStatusPreview    FeatureStatus = "preview"
+	FeatureStatusIncluded   FeatureStatus = "included"
 	FeatureStatusHidden     FeatureStatus = "hidden"
 	FeatureStatusDisallowed FeatureStatus = ""
 )
