@@ -90,8 +90,9 @@ const (
 	SecretEncryption FeatureName = "secret-encryption"
 
 	// Integrations
-	ArgoIntegration  FeatureName = "argo-integration"
-	VaultIntegration FeatureName = "vault-integration"
+	ArgoIntegration    FeatureName = "argo-integration"
+	VaultIntegration   FeatureName = "vault-integration"
+	RancherIntegration FeatureName = "rancher-integration"
 
 	// HA & Other Advanced Deployment Features
 	AirGappedMode        FeatureName = "air-gapped-mode"
