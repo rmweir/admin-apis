@@ -2,7 +2,11 @@ package licenseapi
 
 type ProductName string
 type ModuleName string
+type ModuleStatus string
+type PlanStatus string
+type TierMode string
 type ResourceName string
+type ResourceStatus string
 type TrialStatus string
 type FeatureStatus string
 type FeatureName string
@@ -28,6 +32,27 @@ const (
 	UIModule                  ModuleName = "ui"
 )
 
+// Module Status
+const (
+	ModuleStatusActive     ModuleStatus = "active"
+	ModuleStatusIncluded   ModuleStatus = "included"
+	ModuleStatusDisallowed ModuleStatus = ""
+)
+
+// Plan Status
+const (
+	PlanStatusActive    PlanStatus = "active"
+	PlanStatusTrialing  PlanStatus = "trialing"
+	PlanStatusLegacy    PlanStatus = "legacy"
+	PlanStatusAvailable PlanStatus = ""
+)
+
+// Tier Modes
+const (
+	TierModeGraduated PlanStatus = "graduated"
+	TierModeVolume    PlanStatus = ""
+)
+
 // Resources (e.g. for limits)
 const (
 	ConnectedClusterLimit        ResourceName = "connected-cluster"
@@ -38,9 +63,17 @@ const (
 	InstanceLimit                ResourceName = "instance"
 )
 
+// Resource Status
+const (
+	ResourceStatusActive       ResourceStatus = "active"
+	ResourceStatusTotalCreated ResourceStatus = "created"
+	ResourceStatusTotal        ResourceStatus = ""
+)
+
 // Trial Status
 const (
-	TrialStatusActive FeatureStatus = "active"
+	TrialStatusExpired TrialStatus = "expired"
+	TrialStatusActive  TrialStatus = ""
 )
 
 // Feature Status

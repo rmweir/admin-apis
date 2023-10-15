@@ -4,7 +4,10 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type LicenseAPIRoutes struct {
-	ChatAuth LicenseAPIRoute `json:"chatAuth,omitempty"`
+	ChatAuth       LicenseAPIRoute `json:"chatAuth,omitempty"`
+	FeatureDetails LicenseAPIRoute `json:"feature,omitempty"`
+	Checkout       LicenseAPIRoute `json:"checkout,omitempty"`
+	Portal         LicenseAPIRoute `json:"portal,omitempty"`
 }
 
 // LicenseAPIRoute is a single route of the license api
@@ -13,4 +16,8 @@ type LicenseAPIRoutes struct {
 type LicenseAPIRoute struct {
 	URL    string `json:"url,omitempty"`
 	Method string `json:"method,omitempty"`
+
+	// Tells the frontend whether to make a direct request or to make it via the backend (via generic license api request)
+	// +optional
+	Direct bool `json:"direct,omitempty"`
 }
