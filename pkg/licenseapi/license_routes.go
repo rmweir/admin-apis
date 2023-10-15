@@ -5,7 +5,8 @@ package licenseapi
 // +k8s:deepcopy-gen=true
 type LicenseAPIRoutes struct {
 	ChatAuth       LicenseAPIRoute `json:"chatAuth,omitempty"`
-	FeatureDetails LicenseAPIRoute `json:"feature,omitempty"`
+	FeatureDetails LicenseAPIRoute `json:"featureDetails,omitempty"`
+	FeatureSetup   LicenseAPIRoute `json:"featureSetup,omitempty"`
 	Checkout       LicenseAPIRoute `json:"checkout,omitempty"`
 	Portal         LicenseAPIRoute `json:"portal,omitempty"`
 }

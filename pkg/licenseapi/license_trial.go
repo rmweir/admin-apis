@@ -4,8 +4,8 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Trial struct {
-	// Name is the unique id of this trial
-	Name string `json:"name,omitempty"`
+	// ID is the unique id of this trial
+	ID string `json:"id,omitempty"`
 
 	// DisplayName is a display name for the trial
 	// +optional

@@ -4,24 +4,22 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Plan struct {
-	// ID of the plan
-	ID string `json:"id,omitempty"`
-
 	// DisplayName is the display name of the plan
 	// +optional
 	DisplayName string `json:"displayName,omitempty"`
 
-	// Status is the status of the plan (PlanStatus)
+	// Status is the status of the plan
 	// +optional
-	Status string `json:"status,omitempty"`
+	Status PlanStatus `json:"status,omitempty"`
+
+	// Period provides information about the plan's current period
+	// This is nil unless this is the active plan
+	// +optional
+	Period *PlanPeriod `json:"period,omitempty"`
 
 	// Trial provides details about a planned, ongoing or expired trial
 	// +optional
 	Trial *Trial `json:"trial,omitempty"`
-
-	// Expiration provides information about when this plan expires
-	// +optional
-	Expiration *PlanExpiration `json:"exp,omitempty"`
 
 	// Features is a list of features included in the plan
 	// +optional
@@ -31,26 +29,26 @@ type Plan struct {
 	// +optional
 	Limits []Limit `json:"limits,omitempty"`
 
-	// Quantity sets the quantity the TierResource is supposed to be at
+	// Prices provides details about the available prices (depending on the interval, for example)
 	// +optional
-	Quantity float64 `json:"quantity,omitempty"`
-
-	// TierResource provides details about the main resource the tier quantity relates to
-	// This may be nil for plans that don't have their quantity tied to a resource
-	// +optional
-	TierResource *PlanResource `json:"resource,omitempty"`
-
-	// TierMode defines how tiers should be used
-	// +optional
-	TierMode TierMode `json:"tierMode,omitempty"`
-
-	// Tiers is a list of tiers in this plan
-	// +optional
-	Tiers []PlanTier `json:"tiers,omitempty"`
+	Prices []PlanPrice `json:"prices,omitempty"`
 
 	// AddOns are plans that can be added to this plan
 	// +optional
 	AddOns []Plan `json:"addons,omitempty"`
+}
+
+// PlanPeriod provides details about the period of the plan
+// +k8s:openapi-gen=true
+// +k8s:deepcopy-gen=true
+type PlanPeriod struct {
+	// CurrentPeriodStart contains the unix timestamp marking the start of the current period
+	// +optional
+	CurrentPeriodStart int64 `json:"start,omitempty"`
+
+	// CurrentPeriodEnd contains the unix timestamp marking the end of the current period
+	// +optional
+	CurrentPeriodEnd int64 `json:"end,omitempty"`
 }
 
 // PlanExpiration provides details about the expiration of a plan
@@ -67,10 +65,52 @@ type PlanExpiration struct {
 	UpgradesTo *string `json:"upgradesTo,omitempty"`
 }
 
-// PlanResource provides details about the main resource the tier quantity relates to
+// PlanPrice defines a price for the plan
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
-type PlanResource struct {
+type PlanPrice struct {
+	// ID of the plan
+	ID string `json:"id,omitempty"`
+
+	// Status is the status of the plan (PlanStatus)
+	// +optional
+	Status PlanStatus `json:"status,omitempty"`
+
+	// Interval contains the time span of each period (e.g. month, year)
+	// +optional
+	Interval PlanInterval `json:"interval,omitempty"`
+
+	// IntervalCount specifies if the number of intervals (e.g. 3 [months])
+	// +optional
+	IntervalCount float64 `json:"intervalCount,omitempty"`
+
+	// Expiration provides information about when this plan expires
+	// +optional
+	Expiration *PlanExpiration `json:"exp,omitempty"`
+
+	// Quantity sets the quantity the TierResource is supposed to be at
+	// If this is the active price, then this is the subscription quantity (currently purchased quantity)
+	// +optional
+	Quantity float64 `json:"quantity,omitempty"`
+
+	// TierResource provides details about the main resource the tier quantity relates to
+	// This may be nil for plans that don't have their quantity tied to a resource
+	// +optional
+	TierResource *TierResource `json:"resource,omitempty"`
+
+	// TierMode defines how tiers should be used
+	// +optional
+	TierMode TierMode `json:"tierMode,omitempty"`
+
+	// Tiers is a list of tiers in this plan
+	// +optional
+	Tiers []PlanTier `json:"tiers,omitempty"`
+}
+
+// TierResource provides details about the main resource the tier quantity relates to
+// +k8s:openapi-gen=true
+// +k8s:deepcopy-gen=true
+type TierResource struct {
 	// Name of the resource (ResourceName)
 	Name string `json:"name,omitempty"`
 

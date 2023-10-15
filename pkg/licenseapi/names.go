@@ -4,6 +4,7 @@ type ProductName string
 type ModuleName string
 type ModuleStatus string
 type PlanStatus string
+type PlanInterval string
 type TierMode string
 type ResourceName string
 type ResourceStatus string
@@ -47,10 +48,16 @@ const (
 	PlanStatusAvailable PlanStatus = ""
 )
 
+// Plan Interval
+const (
+	PlanIntervalMonth PlanInterval = "month"
+	PlanIntervalYear  PlanInterval = "year"
+)
+
 // Tier Modes
 const (
-	TierModeGraduated PlanStatus = "graduated"
-	TierModeVolume    PlanStatus = ""
+	TierModeGraduated TierMode = "graduated"
+	TierModeVolume    TierMode = "volume"
 )
 
 // Resources (e.g. for limits)
