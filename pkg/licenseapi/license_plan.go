@@ -9,6 +9,8 @@ type Plan struct {
 	DisplayName string `json:"displayName,omitempty"`
 
 	// Status is the status of the plan
+	// There should only be 1 active plan at the top-level (not including AddOns)
+	// The respective price in Prices will have the active status as well
 	// +optional
 	Status PlanStatus `json:"status,omitempty"`
 
@@ -20,6 +22,10 @@ type Plan struct {
 	// Trial provides details about a planned, ongoing or expired trial
 	// +optional
 	Trial *Trial `json:"trial,omitempty"`
+
+	// UpcomingInvoice provides a preview of the next invoice that will be created for this Plan
+	// +optional
+	UpcomingInvoice *Invoice `json:"invoice,omitempty"`
 
 	// Features is a list of features included in the plan
 	// +optional
@@ -69,10 +75,11 @@ type PlanExpiration struct {
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type PlanPrice struct {
-	// ID of the plan
+	// ID of the price
 	ID string `json:"id,omitempty"`
 
-	// Status is the status of the plan (PlanStatus)
+	// Status is the status of the price (PlanStatus)
+	// If the plan is active, one of its prices must be active as well
 	// +optional
 	Status PlanStatus `json:"status,omitempty"`
 
@@ -104,7 +111,7 @@ type PlanPrice struct {
 
 	// Tiers is a list of tiers in this plan
 	// +optional
-	Tiers []PlanTier `json:"tiers,omitempty"`
+	Tiers []PriceTier `json:"tiers,omitempty"`
 }
 
 // TierResource provides details about the main resource the tier quantity relates to
@@ -119,10 +126,10 @@ type TierResource struct {
 	Status ResourceStatus `json:"status,omitempty"`
 }
 
-// PlanTier defines a tier within a plan
+// PriceTier defines a tier within a plan
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
-type PlanTier struct {
+type PriceTier struct {
 	// MinQuantity is the quantity included in this plan
 	// +optional
 	MinQuantity float64 `json:"min,omitempty"`
@@ -138,4 +145,9 @@ type PlanTier struct {
 	// FlatFee is the flat fee for this tier
 	// +optional
 	FlatFee float64 `json:"flatFee,omitempty"`
+
+	// Currency specifies the currency of UnitPrice and FlatFee in 3-character ISO 4217 code
+	// Default is: "" (representing USD)
+	// +optional
+	Currency string `json:"currency,omitempty"`
 }
