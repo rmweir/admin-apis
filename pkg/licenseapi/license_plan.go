@@ -4,6 +4,9 @@ package licenseapi
 // +k8s:openapi-gen=true
 // +k8s:deepcopy-gen=true
 type Plan struct {
+	// ID of the plan
+	ID string `json:"id,omitempty"`
+
 	// DisplayName is the display name of the plan
 	// +optional
 	DisplayName string `json:"displayName,omitempty"`
