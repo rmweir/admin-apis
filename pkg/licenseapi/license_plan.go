@@ -40,7 +40,7 @@ type Plan struct {
 
 	// Prices provides details about the available prices (depending on the interval, for example)
 	// +optional
-	Prices []PlanPrice `json:"prices,omitempty"`
+	Prices *[]PlanPrice `json:"prices,omitempty"`
 
 	// AddOns are plans that can be added to this plan
 	// +optional
