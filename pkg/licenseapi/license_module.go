@@ -11,7 +11,7 @@ type Module struct {
 	DisplayName string `json:"displayName,omitempty"`
 
 	// +optional
-	Status ModuleStatus `json:"status,omitempty"`
+	Status FeatureStatus `json:"status,omitempty"`
 
 	Limits   []*Limit   `json:"limits,omitempty"`
 	Features []*Feature `json:"features,omitempty"`

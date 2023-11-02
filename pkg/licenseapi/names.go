@@ -2,7 +2,6 @@ package licenseapi
 
 type ProductName string
 type ModuleName string
-type ModuleStatus string
 type PlanStatus string
 type PlanInterval string
 type TierMode string
@@ -31,13 +30,6 @@ const (
 	SecretsModule             ModuleName = "secrets"
 	DeploymentModesModule     ModuleName = "deployment-modes"
 	UIModule                  ModuleName = "ui"
-)
-
-// Module Status
-const (
-	ModuleStatusActive     ModuleStatus = "active"
-	ModuleStatusIncluded   ModuleStatus = "included"
-	ModuleStatusDisallowed ModuleStatus = ""
 )
 
 // Plan Status
