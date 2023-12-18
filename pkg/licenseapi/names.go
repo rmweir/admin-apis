@@ -90,14 +90,15 @@ const (
 	DevPod FeatureName = "devpod"
 
 	// Virtual Clusters
-	VirtualCluster                              FeatureName = "vclusters"
-	VirtualClusterSleepMode                     FeatureName = "vcluster-sleep-mode"
-	VirtualClusterCentralHostPathMapper         FeatureName = "vcluster-host-path-mapper"
-	VirtualClusterProDistroImage                FeatureName = "vcp-distro-image"
-	VirtualClusterProDistroAdmissionControl     FeatureName = "vcp-distro-admission-control"
-	VirtualClusterProDistroBuiltInCoreDNS       FeatureName = "vcp-distro-built-in-coredns"
-	VirtualClusterProDistroIsolatedControlPlane FeatureName = "vcp-distro-isolated-cp"
-	VirtualClusterProDistroSyncPatches          FeatureName = "vcp-distro-sync-patches"
+	VirtualCluster                                     FeatureName = "vclusters"
+	VirtualClusterSleepMode                            FeatureName = "vcluster-sleep-mode"
+	VirtualClusterCentralHostPathMapper                FeatureName = "vcluster-host-path-mapper"
+	VirtualClusterProDistroImage                       FeatureName = "vcp-distro-image"
+	VirtualClusterProDistroAdmissionControl            FeatureName = "vcp-distro-admission-control"
+	VirtualClusterProDistroBuiltInCoreDNS              FeatureName = "vcp-distro-built-in-coredns"
+	VirtualClusterProDistroIsolatedControlPlane        FeatureName = "vcp-distro-isolated-cp"
+	VirtualClusterProDistroSyncPatches                 FeatureName = "vcp-distro-sync-patches"
+	VirtualClusterProDistroCentralizedAdmissionControl FeatureName = "vcp-distro-centralized-admission-control"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
