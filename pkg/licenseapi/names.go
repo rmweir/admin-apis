@@ -90,6 +90,7 @@ const (
 	DevPod FeatureName = "devpod"
 
 	// Virtual Clusters
+	// when adding a new vCluster feature, add it to GetVClusterFeatures()
 	VirtualCluster                                     FeatureName = "vclusters"
 	VirtualClusterSleepMode                            FeatureName = "vcluster-sleep-mode"
 	VirtualClusterCentralHostPathMapper                FeatureName = "vcluster-host-path-mapper"
