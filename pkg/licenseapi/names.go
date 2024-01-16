@@ -10,6 +10,7 @@ type ResourceStatus string
 type TrialStatus string
 type FeatureStatus string
 type FeatureName string
+type ButtonName string
 
 // Products
 const (
@@ -73,6 +74,12 @@ const (
 const (
 	TrialStatusExpired TrialStatus = "expired"
 	TrialStatusActive  TrialStatus = ""
+)
+
+// Buttons
+const (
+	ButtonContactSales  ButtonName = "contact-sales"
+	ButtonManageBilling ButtonName = "manage-billing"
 )
 
 // Feature Status
