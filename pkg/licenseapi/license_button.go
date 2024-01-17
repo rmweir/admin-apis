@@ -6,6 +6,7 @@ package licenseapi
 // +k8s:deepcopy-gen=true
 type Button struct {
 	// Name is the name of the button (ButtonName). Optional.
+	// +optional
 	Name string `json:"name,omitempty"`
 
 	// URL is the link at the other end of the button.
