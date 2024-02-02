@@ -1,4 +1,4 @@
-package licenseapi
+package features
 
 type ProductName string
 type ModuleName string
@@ -97,7 +97,7 @@ const (
 	DevPod FeatureName = "devpod"
 
 	// Virtual Clusters
-	// when adding a new vCluster feature, add it to GetVClusterFeatures()
+	// when adding a new vCluster feature, add it to GetVClusterFeatures() as well
 	VirtualCluster                                     FeatureName = "vclusters"
 	VirtualClusterSleepMode                            FeatureName = "vcluster-sleep-mode"
 	VirtualClusterCentralHostPathMapper                FeatureName = "vcluster-host-path-mapper"
@@ -107,6 +107,7 @@ const (
 	VirtualClusterProDistroIsolatedControlPlane        FeatureName = "vcp-distro-isolated-cp"
 	VirtualClusterProDistroSyncPatches                 FeatureName = "vcp-distro-sync-patches"
 	VirtualClusterProDistroCentralizedAdmissionControl FeatureName = "vcp-distro-centralized-admission-control"
+	VirtualClusterProEmbeddedEtcd                      FeatureName = "vcp-distro-embedded-etcd"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
@@ -150,3 +151,18 @@ const (
 	ConnectLocalCluster    FeatureName = "connect-local-cluster"
 	PasswordAuthentication FeatureName = "password-auth"
 )
+
+func GetVClusterFeatures() []FeatureName {
+	return []FeatureName{
+		VirtualCluster,
+		VirtualClusterSleepMode,
+		VirtualClusterCentralHostPathMapper,
+		VirtualClusterProDistroImage,
+		VirtualClusterProDistroAdmissionControl,
+		VirtualClusterProDistroBuiltInCoreDNS,
+		VirtualClusterProDistroIsolatedControlPlane,
+		VirtualClusterProDistroSyncPatches,
+		VirtualClusterProDistroCentralizedAdmissionControl,
+		VirtualClusterProEmbeddedEtcd,
+	}
+}
