@@ -33,7 +33,7 @@ type InstanceCreateInput struct {
 	// ForcedInstanceID is the ID of the instance. This is only used for testing purposes.
 	// Should never be sent from production instances.
 	// Requires authentication via an access key.
-	ForcedInstanceID string `json:"forcedInstanceID,omitempty" form:"forcedInstanceID"`
+	ForcedInstanceID *string `json:"forcedInstanceID,omitempty" form:"forcedInstanceID"`
 }
 
 // InstanceCreateOutput is the struct holding all information returned from "instance create"
