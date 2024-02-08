@@ -97,6 +97,11 @@ func New(product ProductName) *License {
 						Status:      virtualClusterStatus,
 					},
 					{
+						DisplayName: "Embedded etcd",
+						Name:        string(VirtualClusterProEmbeddedEtcd),
+						Status:      virtualClusterStatus,
+					},
+					{
 						DisplayName: "Isolated Control Plane",
 						Name:        string(VirtualClusterProDistroIsolatedControlPlane),
 						Status:      virtualClusterStatus,
