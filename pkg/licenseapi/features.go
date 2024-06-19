@@ -17,6 +17,7 @@ const (
 	VirtualClusterProDistroSyncPatches                 FeatureName = "vcp-distro-sync-patches"
 	VirtualClusterProDistroCentralizedAdmissionControl FeatureName = "vcp-distro-centralized-admission-control"
 	VirtualClusterProEmbeddedEtcd                      FeatureName = "vcp-distro-embedded-etcd"
+	VirtualClusterEsoIntegration                       FeatureName = "vcp-eso-integration"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
@@ -73,5 +74,6 @@ func GetVClusterFeatures() []FeatureName {
 		VirtualClusterProDistroSyncPatches,
 		VirtualClusterProDistroCentralizedAdmissionControl,
 		VirtualClusterProEmbeddedEtcd,
+		VirtualClusterEsoIntegration,
 	}
 }
