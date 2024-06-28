@@ -17,7 +17,7 @@ const (
 	VirtualClusterProDistroSyncPatches                 FeatureName = "vcp-distro-sync-patches"
 	VirtualClusterProDistroCentralizedAdmissionControl FeatureName = "vcp-distro-centralized-admission-control"
 	VirtualClusterProEmbeddedEtcd                      FeatureName = "vcp-distro-embedded-etcd"
-	VirtualClusterEsoIntegration                       FeatureName = "vcp-eso-integration"
+	VirtualClusterEnterprisePlugins                    FeatureName = "vcluster-enterprise-plugins"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
