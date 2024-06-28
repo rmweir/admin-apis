@@ -74,6 +74,6 @@ func GetVClusterFeatures() []FeatureName {
 		VirtualClusterProDistroSyncPatches,
 		VirtualClusterProDistroCentralizedAdmissionControl,
 		VirtualClusterProEmbeddedEtcd,
-		VirtualClusterEsoIntegration,
+		VirtualClusterEnterprisePlugins,
 	}
 }
