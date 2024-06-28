@@ -70,6 +70,11 @@ func New(product ProductName) *License {
 						Name:        string(VirtualClusterCentralHostPathMapper),
 						Status:      virtualClusterStatus,
 					},
+					{
+						DisplayName: "Enterprise Plugins",
+						Name:        string(VirtualClusterEnterprisePlugins),
+						Status:      virtualClusterStatus,
+					},
 				},
 			},
 			{
