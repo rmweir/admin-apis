@@ -103,7 +103,7 @@ func New(product ProductName) *License {
 					},
 					{
 						DisplayName: "Embedded etcd",
-						Name:        string(VirtualClusterProEmbeddedEtcd),
+						Name:        string(VirtualClusterProDistroEmbeddedEtcd),
 						Status:      virtualClusterStatus,
 					},
 					{
@@ -114,6 +114,16 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "Centralized Admission Control",
 						Name:        string(VirtualClusterProDistroCentralizedAdmissionControl),
+						Status:      virtualClusterStatus,
+					},
+					{
+						DisplayName: "Generic Sync",
+						Name:        string(VirtualClusterProDistroGenericSync),
+						Status:      virtualClusterStatus,
+					},
+					{
+						DisplayName: "Translate Patches",
+						Name:        string(VirtualClusterProDistroTranslatePatches),
 						Status:      virtualClusterStatus,
 					},
 				},
