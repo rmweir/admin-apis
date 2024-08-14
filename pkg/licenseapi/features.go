@@ -16,10 +16,10 @@ const (
 	VirtualClusterProDistroIsolatedControlPlane        FeatureName = "vcp-distro-isolated-cp"
 	VirtualClusterProDistroSyncPatches                 FeatureName = "vcp-distro-sync-patches"
 	VirtualClusterProDistroCentralizedAdmissionControl FeatureName = "vcp-distro-centralized-admission-control"
-	VirtualClusterProEmbeddedEtcd                      FeatureName = "vcp-distro-embedded-etcd"
+	VirtualClusterProDistroEmbeddedEtcd                FeatureName = "vcp-distro-embedded-etcd"
+	VirtualClusterProDistroGenericSync                 FeatureName = "vcp-distro-generic-sync"
+	VirtualClusterProDistroTranslatePatches            FeatureName = "vcp-distro-translate-patches"
 	VirtualClusterEnterprisePlugins                    FeatureName = "vcluster-enterprise-plugins"
-	VirtualClusterGenericSync                          FeatureName = "vcluster-generic-sync"
-	VirtualClusterTranslatePatches                     FeatureName = "vcluster-translate-patches"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
@@ -75,9 +75,9 @@ func GetVClusterFeatures() []FeatureName {
 		VirtualClusterProDistroIsolatedControlPlane,
 		VirtualClusterProDistroSyncPatches,
 		VirtualClusterProDistroCentralizedAdmissionControl,
-		VirtualClusterProEmbeddedEtcd,
+		VirtualClusterProDistroEmbeddedEtcd,
+		VirtualClusterProDistroGenericSync,
+		VirtualClusterProDistroTranslatePatches,
 		VirtualClusterEnterprisePlugins,
-		VirtualClusterGenericSync,
-		VirtualClusterTranslatePatches,
 	}
 }
