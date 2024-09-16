@@ -126,6 +126,11 @@ func New(product ProductName) *License {
 						Name:        string(VirtualClusterProDistroTranslatePatches),
 						Status:      virtualClusterStatus,
 					},
+					{
+						DisplayName: "FIPS",
+						Name:        string(VirtualClusterProDistroFips),
+						Status:      virtualClusterStatus,
+					},
 				},
 			},
 			{
