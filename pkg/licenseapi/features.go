@@ -24,6 +24,7 @@ const (
 	VirtualClusterProDistroIntegrationsExternalSecrets FeatureName = "vcp-distro-integrations-external-secrets"
 	VirtualClusterProDistroIntegrationsKubeVirt        FeatureName = "vcp-distro-integrations-kube-virt"
 	VirtualClusterProDistroExternalDatabase            FeatureName = "vcp-distro-external-database"
+	VirtualClusterProDistroDatabaseConnector           FeatureName = "connector-external-database"
 
 	// Spaces & Clusters
 	ConnectedClusters  FeatureName = "connected-clusters"
@@ -87,5 +88,6 @@ func GetVClusterFeatures() []FeatureName {
 		VirtualClusterProDistroIntegrationsKubeVirt,
 		VirtualClusterProDistroIntegrationsExternalSecrets,
 		VirtualClusterProDistroExternalDatabase,
+		VirtualClusterProDistroDatabaseConnector,
 	}
 }

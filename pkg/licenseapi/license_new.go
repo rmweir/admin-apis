@@ -144,6 +144,10 @@ func New(product ProductName) *License {
 					{
 						DisplayName: "External Database",
 						Name:        string(VirtualClusterProDistroExternalDatabase),
+					},
+					{
+						DisplayName: "Database Connector",
+						Name:        string(VirtualClusterProDistroDatabaseConnector),
 						Status:      virtualClusterStatus,
 					},
 				},
