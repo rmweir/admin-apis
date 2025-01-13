@@ -67,7 +67,7 @@ func New(product ProductName) *License {
 					},
 					{
 						DisplayName: "Central HostPath Mapper",
-						Name:        string(VirtualClusterCentralHostPathMapper),
+						Name:        string(VirtualClusterHostPathMapper),
 						Status:      virtualClusterStatus,
 					},
 					{
@@ -152,7 +152,7 @@ func New(product ProductName) *License {
 					},
 					{
 						DisplayName: "Database Connector",
-						Name:        string(VirtualClusterProDistroDatabaseConnector),
+						Name:        string(ConnectorExternalDatabase),
 						Status:      virtualClusterStatus,
 					},
 					{
@@ -171,7 +171,7 @@ func New(product ProductName) *License {
 				Features: []*Feature{
 					{
 						DisplayName: "Dev Environment Management",
-						Name:        string(DevPod),
+						Name:        string(Devpod),
 						Status:      devpodStatus,
 					},
 				},
@@ -182,7 +182,7 @@ func New(product ProductName) *License {
 				Features: []*Feature{
 					{
 						DisplayName: "Namespace Management",
-						Name:        string(Namespace),
+						Name:        string(Namespaces),
 						Status:      namespaceStatus,
 					},
 					{
@@ -235,7 +235,7 @@ func New(product ProductName) *License {
 					},
 					{
 						DisplayName: "Automatic Auth For Ingresses",
-						Name:        string(AutomaticIngressAuth),
+						Name:        string(AutoIngressAuth),
 						Status:      allowedStatus,
 					},
 					{
