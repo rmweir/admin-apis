@@ -12,18 +12,7 @@ type Feature struct {
 	// +optional
 	DisplayName string `json:"displayName,omitempty"`
 
-	// +optional
-	Description string `json:"description,omitempty"`
-
 	// Status shows the status of the feature (see type FeatureStatus)
 	// +optional
 	Status string `json:"status,omitempty"`
-
-	// Compatibility contains a series of semver compatibility constraints
-	// +optional
-	Compatibility string `json:"compatibility,omitempty"`
-
-	// Labels contains a list of labels to be displayed for this feature (e.g. alpha, beta)
-	// +optional
-	Labels []string `json:"labels,omitempty"`
 }
