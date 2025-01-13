@@ -1,11 +1,23 @@
 package licenseapi
 
+// This code was generated. Change features.yaml to add, remove, or edit features.
+
+import (
+	"cmp"
+	"slices"
+)
+
 func New() *License {
 	limits := make([]*Limit, 0, len(Limits))
 	for _, limit := range Limits {
 		limits = append(limits, limit)
 	}
+	slices.SortFunc(limits, func(a, b *Limit) int {
+		return cmp.Compare(a.Name, b.Name)
+	})
 
+	// Sorting features by module is not requires here. However, to maintain backwards compatibility, the structure of
+	// features being contained within a module is still necessary. Therefore, all features are now returned in one module.
 	return &License{
 		Modules: []*Module{
 			{
@@ -15,184 +27,175 @@ func New() *License {
 				Features: []*Feature{
 					{
 						DisplayName: "Virtual Cluster Management",
-						Name:        string(VirtualCluster),
+						Name:        "vclusters",
 					},
 					{
 						DisplayName: "Sleep Mode for Virtual Clusters",
-						Name:        string(VirtualClusterSleepMode),
+						Name:        "vcluster-sleep-mode",
 					},
 					{
 						DisplayName: "Central HostPath Mapper",
-						Name:        string(VirtualClusterHostPathMapper),
+						Name:        "vcluster-host-path-mapper",
 					},
 					{
 						DisplayName: "Enterprise Plugins",
-						Name:        string(VirtualClusterEnterprisePlugins),
+						Name:        "vcluster-enterprise-plugins",
 					},
 					{
 						DisplayName: "Security-Hardened vCluster Image",
-						Name:        string(VirtualClusterProDistroImage),
+						Name:        "vcp-distro-image",
 					},
 					{
 						DisplayName: "Built-In CoreDNS",
-						Name:        string(VirtualClusterProDistroBuiltInCoreDNS),
+						Name:        "vcp-distro-built-in-coredns",
 					},
 					{
 						DisplayName: "Virtual Admission Control",
-						Name:        string(VirtualClusterProDistroAdmissionControl),
-						Status:      string(FeatureStatusHidden),
+						Name:        "vcp-distro-admission-control",
 					},
 					{
 						DisplayName: "Sync Patches",
-						Name:        string(VirtualClusterProDistroSyncPatches),
+						Name:        "vcp-distro-sync-patches",
 					},
 					{
 						DisplayName: "Embedded etcd",
-						Name:        string(VirtualClusterProDistroEmbeddedEtcd),
+						Name:        "vcp-distro-embedded-etcd",
 					},
 					{
 						DisplayName: "Isolated Control Plane",
-						Name:        string(VirtualClusterProDistroIsolatedControlPlane),
+						Name:        "vcp-distro-isolated-cp",
 					},
 					{
 						DisplayName: "Centralized Admission Control",
-						Name:        string(VirtualClusterProDistroCentralizedAdmissionControl),
+						Name:        "vcp-distro-centralized-admission-control",
 					},
 					{
 						DisplayName: "Generic Sync",
-						Name:        string(VirtualClusterProDistroGenericSync),
+						Name:        "vcp-distro-generic-sync",
 					},
 					{
 						DisplayName: "Translate Patches",
-						Name:        string(VirtualClusterProDistroTranslatePatches),
+						Name:        "vcp-distro-translate-patches",
 					},
 					{
 						DisplayName: "KubeVirt Integration",
-						Name:        string(VirtualClusterProDistroIntegrationsKubeVirt),
+						Name:        "vcp-distro-integrations-kube-virt",
 					},
 					{
 						DisplayName: "External Secrets Integration",
-						Name:        string(VirtualClusterProDistroIntegrationsExternalSecrets),
+						Name:        "vcp-distro-integrations-external-secrets",
 					},
 					{
 						DisplayName: "Cert Manager Integration",
-						Name:        string(VirtualClusterProDistroIntegrationsCertManager),
+						Name:        "vcp-distro-integrations-cert-manager",
 					},
 					{
 						DisplayName: "FIPS",
-						Name:        string(VirtualClusterProDistroFips),
+						Name:        "vcp-distro-fips",
 					},
 					{
 						DisplayName: "External Database",
-						Name:        string(VirtualClusterProDistroExternalDatabase),
+						Name:        "vcp-distro-external-database",
 					},
 					{
 						DisplayName: "Database Connector",
-						Name:        string(ConnectorExternalDatabase),
+						Name:        "connector-external-database",
 					},
 					{
 						DisplayName: "SleepMode",
-						Name:        string(VirtualClusterProDistroSleepMode),
+						Name:        "vcp-distro-sleep-mode",
 					},
 					{
 						DisplayName: "Dev Environment Management",
-						Name:        string(Devpod),
+						Name:        "devpod",
 					},
 					{
 						DisplayName: "Namespace Management",
-						Name:        string(Namespaces),
+						Name:        "namespaces",
 					},
 					{
 						DisplayName: "Sleep Mode for Namespaces",
-						Name:        string(NamespaceSleepMode),
+						Name:        "namespace-sleep-mode",
 					},
 					{
 						DisplayName: "Connected Clusters",
-						Name:        string(ConnectedClusters),
+						Name:        "connected-clusters",
 					},
 					{
 						DisplayName: "Cluster Access",
-						Name:        string(ClusterAccess),
+						Name:        "cluster-access",
 					},
 					{
 						DisplayName: "Cluster Role Management",
-						Name:        string(ClusterRoles),
+						Name:        "cluster-roles",
 					},
 					{
 						DisplayName: "Single Sign-On",
-						Name:        string(SSOAuth),
+						Name:        "sso-authentication",
 					},
 					{
 						DisplayName: "Audit Logging",
-						Name:        string(AuditLogging),
+						Name:        "audit-logging",
 					},
 					{
 						DisplayName: "Automatic Auth For Ingresses",
-						Name:        string(AutoIngressAuth),
+						Name:        "auto-ingress-authentication",
 					},
 					{
 						DisplayName: "Loft as OIDC Provider",
-						Name:        string(OIDCProvider),
+						Name:        "oidc-provider",
 					},
 					{
 						DisplayName: "Multiple SSO Providers",
-						Name:        string(MultipleSSOProviders),
+						Name:        "multiple-sso-providers",
 					},
 					{
 						DisplayName: "Apps",
-						Name:        string(Apps),
+						Name:        "apps",
 					},
 					{
 						DisplayName: "Template Versioning",
-						Name:        string(TemplateVersioning),
+						Name:        "template-versioning",
 					},
 					{
 						DisplayName: "Argo Integration",
-						Name:        string(ArgoIntegration),
+						Name:        "argo-integration",
 					},
 					{
 						DisplayName: "Rancher Integration",
-						Name:        string(RancherIntegration),
+						Name:        "rancher-integration",
 					},
 					{
 						DisplayName: "Secrets Sync",
-						Name:        string(Secrets),
+						Name:        "secrets",
 					},
 					{
 						DisplayName: "Secrets Encryption",
-						Name:        string(SecretEncryption),
+						Name:        "secret-encryption",
 					},
 					{
 						DisplayName: "HashiCorp Vault Integration",
-						Name:        string(VaultIntegration),
+						Name:        "vault-integration",
 					},
 					{
 						DisplayName: "High-Availability Mode",
-						Name:        string(HighAvailabilityMode),
+						Name:        "ha-mode",
 					},
 					{
 						DisplayName: "Multi-Region Mode",
-						Name:        string(MultiRegionMode),
+						Name:        "multi-region-mode",
 					},
 					{
 						DisplayName: "Air-Gapped Mode",
-						Name:        string(AirGappedMode),
+						Name:        "air-gapped-mode",
 					},
 					{
 						DisplayName: "Custom Branding",
-						Name:        string(CustomBranding),
+						Name:        "custom-branding",
 					},
 					{
 						DisplayName: "Advanced UI Customizations",
-						Name:        string(AdvancedUICustomizations),
-					},
-					{
-						DisplayName: "Custom Branding",
-						Name:        string(CustomBranding),
-					},
-					{
-						DisplayName: "Advanced UI Customizations",
-						Name:        string(AdvancedUICustomizations),
+						Name:        "advanced-ui-customizations",
 					},
 				},
 			},
