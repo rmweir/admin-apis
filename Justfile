@@ -17,6 +17,7 @@ gen:
     --input-dirs ./pkg/licenseapi \
     -O zz_generated.deepcopy \
     -o ./
+  go generate ./...
 
 # Check struct memory alignment and print potential improvements
 [no-exit-message]
