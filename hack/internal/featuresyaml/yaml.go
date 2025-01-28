@@ -1,10 +1,11 @@
 package featuresyaml
 
 import (
-	"github.com/ghodss/yaml"
-	"github.com/loft-sh/admin-apis/pkg/licenseapi"
 	"io"
 	"os"
+
+	"github.com/ghodss/yaml"
+	"github.com/loft-sh/admin-apis/pkg/licenseapi"
 )
 
 func ReadFeaturesYaml(yamlPath string) ([]*licenseapi.Feature, error) {

@@ -6,7 +6,8 @@ import (
 
 	"github.com/loft-sh/admin-apis/hack/internal/featuresyaml"
 	"github.com/stripe/stripe-go/v81"
-	"github.com/stripe/stripe-go/v81/entitlements/feature"
+	stripefeatures "github.com/stripe/stripe-go/v81/entitlements/feature"
+	stripeproducts "github.com/stripe/stripe-go/v81/product"
 )
 
 func main() {
@@ -21,48 +22,55 @@ func main() {
 		panic(err)
 	}
 
+	productsWithAllFeatures := stripeproducts.List(&stripe.ProductListParams{})
 	for _, f := range features {
-		exists, err := featureExists(f.Name)
+		err = ensureFeatureExists(f.Name, f.DisplayName)
 		if err != nil {
 			fmt.Println(err)
 			continue
 		}
-		if !exists {
-			_, err = feature.New(&stripe.EntitlementsFeatureParams{
-				Name:      &f.DisplayName,
-				LookupKey: &f.Name,
-			})
-			if err != nil {
-				fmt.Printf("failed to create Stripe feature from feature %s: %v\n", f.Name, err)
-				continue
-			}
+
+		if !f.Preview {
+			continue
 		}
-		if
-		_, err = feature.New(&stripe.EntitlementsFeatureParams{
-			Name:      &f.DisplayName,
-			LookupKey: &f.Name,
-		})
+
+		err = ensureFeatureExists(f.Name+"-preview", "Preview: "+f.DisplayName)
 		if err != nil {
-			fmt.Printf("failed to create Stripe feature from feature %s: %v\n", f.Name, err)
+			fmt.Println(err)
 			continue
 		}
 	}
-	feature.Update()
+}
+
+func ensureFeatureExists(name, displayName string) error {
+	exists, err := featureExists(name)
+	if err != nil {
+		return err
+	}
+
+	if exists {
+		return nil
+	}
+
+	_, err = stripefeatures.New(&stripe.EntitlementsFeatureParams{
+		Name:      &displayName,
+		LookupKey: &name,
+	})
+	if err != nil {
+		return fmt.Errorf("failed to create Stripe feature from feature %s: %v\n", name, err)
+	}
+	return nil
 }
 
 func featureExists(id string) (bool, error) {
-	_, err := feature.Get(id, &stripe.EntitlementsFeatureParams{})
-	if err != nil {
-		stripeErr, ok := err.(*stripe.Error)
-		if !ok {
-			return false, err
-		}
-		if stripeErr.Type != stripe.ErrorTypeInvalidRequest {
-			return false, err
-		}
-		// going to assume here that the request is invalid because the id was not found, we may find
-		// this check is not sufficient
-		return false, nil
+	list := stripefeatures.List(&stripe.EntitlementsFeatureListParams{
+		LookupKey: &id,
+	})
+	if err := list.Err(); err != nil {
+		return false, err
 	}
-	return true, nil
+	if list.Next() {
+		return true, nil
+	}
+	return false, nil
 }
