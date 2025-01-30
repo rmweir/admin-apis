@@ -15,13 +15,13 @@ import (
 )
 
 const (
-	metadataQueryFmt       = "metadata['%s']:'%s'"
-	metadataFieldAttachAll = "attach_all_features"
+	metadataQueryFmt             = "metadata['%s']:'%s'"
+	metadataKeyAttachAll         = "attach_all_features"
+	metadataKeyProductForFeature = "product_for_feature"
 )
 
-// TODO possibly add displayName here either explicity or just embed licenseapi.Feature for all non-stripe fields
+// TODO: figure out why only 40 products are being made instead of 43
 type syncedFeature struct {
-	licenseapi.Feature
 	name        string
 	displayName string
 	stripeID    string
@@ -55,39 +55,38 @@ func main() {
 
 }
 
-func syncStripeFeatures(features []*licenseapi.Feature) map[syncedFeature]bool {
-	featureIDs := make(map[syncedFeature]bool, len(features))
+func syncStripeFeatures(features []*licenseapi.Feature) map[string]syncedFeature {
+	syncedFeatures := make(map[string]syncedFeature, len(features))
 	for _, f := range features {
-		id, err := ensureFeatureExists(f.Name, f.DisplayName)
+		feature, err := ensureFeatureExists(f.Name, f.DisplayName)
 		if err != nil {
 			log.Println(err)
 			continue
 		}
-		featureIDs[syncedFeature{name: f.Name, stripeID: id}] = true
+		syncedFeatures[feature.stripeID] = feature
 
 		if !f.Preview {
 			continue
 		}
 
-		previewName := f.Name + "-preview"
-		previewId, err := ensureFeatureExists(previewName, "Preview: "+f.DisplayName)
+		previewFeature, err := ensureFeatureExists(f.Name+"-preview", "Preview: "+f.DisplayName)
 		if err != nil {
 			log.Println(err)
 			continue
 		}
-		featureIDs[syncedFeature{name: previewName, stripeID: previewId}] = true
+		syncedFeatures[previewFeature.stripeID] = previewFeature
 	}
-	return featureIDs
+	return syncedFeatures
 }
 
-func ensureFeatureExists(name, displayName string) (string, error) {
+func ensureFeatureExists(name, displayName string) (syncedFeature, error) {
 	id, exists, err := featureExists(name)
 	if err != nil {
-		return "", err
+		return syncedFeature{}, err
 	}
 
 	if exists {
-		return id, nil
+		return syncedFeature{name: name, displayName: displayName, stripeID: id}, nil
 	}
 
 	feature, err := stripefeatures.New(&stripe.EntitlementsFeatureParams{
@@ -95,9 +94,9 @@ func ensureFeatureExists(name, displayName string) (string, error) {
 		LookupKey: &name,
 	})
 	if err != nil {
-		return "", fmt.Errorf("failed to create Stripe feature from feature %s: %v\n", name, err)
+		return syncedFeature{}, fmt.Errorf("failed to create Stripe feature from feature %s: %v\n", name, err)
 	}
-	return feature.ID, nil
+	return syncedFeature{name: name, displayName: displayName, stripeID: feature.ID}, nil
 }
 
 func featureExists(id string) (string, bool, error) {
@@ -117,8 +116,8 @@ func featureExists(id string) (string, bool, error) {
 	return feature.ID, true, nil
 }
 
-func ensureFeatureProducts(syncedFeatures map[syncedFeature]bool) error {
-	for feature := range syncedFeatures {
+func ensureFeatureProducts(syncedFeatures map[string]syncedFeature) error {
+	for _, feature := range syncedFeatures {
 		if err := ensureFeatureProduct(feature); err != nil {
 			return err
 		}
@@ -129,7 +128,7 @@ func ensureFeatureProducts(syncedFeatures map[syncedFeature]bool) error {
 func ensureFeatureProduct(syncedFeature syncedFeature) error {
 	search := stripeproducts.Search(&stripe.ProductSearchParams{
 		SearchParams: stripe.SearchParams{
-			Query: fmt.Sprintf(metadataQueryFmt, syncedFeature.name, "true"),
+			Query: fmt.Sprintf(metadataQueryFmt, metadataKeyProductForFeature, syncedFeature.name),
 		},
 	})
 	if err := search.Err(); err != nil {
@@ -139,8 +138,24 @@ func ensureFeatureProduct(syncedFeature syncedFeature) error {
 		// a product exists with features name
 		return nil
 	}
+
+	usdCurrencyCode := "usd"
+	unit := int64(2000000) // =20k, this is in cents
+	interval := "month"
+	intervalCount := int64(1)
 	product, err := stripeproducts.New(&stripe.ProductParams{
-		Name: &syncedFeature.name, // TODO: probably going to change name to something like the displayName of feature
+		Name: &syncedFeature.displayName,
+		DefaultPriceData: &stripe.ProductDefaultPriceDataParams{
+			Currency:   &usdCurrencyCode,
+			UnitAmount: &unit,
+			Recurring: &stripe.ProductDefaultPriceDataRecurringParams{
+				Interval:      &interval,
+				IntervalCount: &intervalCount,
+			},
+		},
+		Metadata: map[string]string{
+			metadataKeyProductForFeature: syncedFeature.name,
+		},
 	})
 	if err != nil {
 		return err
@@ -155,10 +170,10 @@ func ensureFeatureProduct(syncedFeature syncedFeature) error {
 	return nil
 }
 
-func ensureAttachAll(featureIDs map[syncedFeature]bool) error {
+func ensureAttachAll(featureIDs map[string]syncedFeature) error {
 	search := stripeproducts.Search(&stripe.ProductSearchParams{
 		SearchParams: stripe.SearchParams{
-			Query: fmt.Sprintf(metadataQueryFmt, metadataFieldAttachAll, "true"),
+			Query: fmt.Sprintf(metadataQueryFmt, metadataKeyAttachAll, "true"),
 		},
 	})
 	if err := search.Err(); err != nil {
@@ -167,14 +182,14 @@ func ensureAttachAll(featureIDs map[syncedFeature]bool) error {
 
 	for search.Next() {
 		prod := search.Product()
-		featuresToCheck := maps.Clone[map[syncedFeature]bool](featureIDs)
+		featuresToCheck := maps.Clone[map[string]syncedFeature](featureIDs)
 		if err := SearchProductForFeatures(prod.ID, featuresToCheck); err != nil {
 			return err
 		}
-		for feature := range featuresToCheck {
+		for featureID := range featuresToCheck {
 			_, err := productfeature.New(&stripe.ProductFeatureParams{
 				Product:            &prod.ID,
-				EntitlementFeature: &feature.stripeID,
+				EntitlementFeature: &featureID,
 			})
 			if err != nil {
 				return err
@@ -184,15 +199,15 @@ func ensureAttachAll(featureIDs map[syncedFeature]bool) error {
 	return nil
 }
 
-func SearchProductForFeatures(productID string, featuresToCheck map[syncedFeature]bool) error {
-	productsPage := productfeature.List(&stripe.ProductFeatureListParams{
+func SearchProductForFeatures(productID string, featuresToCheck map[string]syncedFeature) error {
+	productFeaturesPage := productfeature.List(&stripe.ProductFeatureListParams{
 		Product: &productID,
 	})
-	for productsPage.Next() {
-		if err := productsPage.Err(); err != nil {
+	for productFeaturesPage.Next() {
+		if err := productFeaturesPage.Err(); err != nil {
 			return err
 		}
-		delete(featuresToCheck, syncedFeature{name: productsPage.ProductFeature().EntitlementFeature.LookupKey, stripeID: productsPage.ProductFeature().EntitlementFeature.ID})
+		delete(featuresToCheck, productFeaturesPage.ProductFeature().EntitlementFeature.ID)
 	}
 	return nil
 }
