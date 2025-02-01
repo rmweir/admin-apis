@@ -13,3 +13,10 @@ just gen
 ```
 just gen
 ```
+
+## Test Stripe feature upload CI locally
+1. Create token in Stripe sandbox
+2. run
+```
+STRIPE_API_TOKEN=<sandbox-token> just upload-ci-local
+```
