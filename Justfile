@@ -20,7 +20,7 @@ gen:
   go generate ./...
 
 upload-ci-local:
-  act pull_request -v -W .github/workflows/go.yml -j upload-features -s STRIPE_API_TOKEN=$STRIPE_API_TOKEN
+  act workflow_dispatch -v -W .github/workflows/upload.yaml -s STRIPE_API_TOKEN=$STRIPE_API_TOKEN
 
 # Check struct memory alignment and print potential improvements
 [no-exit-message]
