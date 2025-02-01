@@ -20,7 +20,6 @@ const (
 	metadataKeyProductForFeature = "product_for_feature"
 )
 
-// TODO: figure out why only 40 products are being made instead of 43
 type syncedFeature struct {
 	name        string
 	displayName string
@@ -141,7 +140,7 @@ func ensureFeatureProduct(syncedFeature syncedFeature) error {
 
 	usdCurrencyCode := "usd"
 	unit := int64(2000000) // =20k, this is in cents
-	interval := "month"
+	interval := "year"
 	intervalCount := int64(1)
 	product, err := stripeproducts.New(&stripe.ProductParams{
 		Name: &syncedFeature.displayName,
