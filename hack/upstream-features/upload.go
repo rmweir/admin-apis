@@ -27,7 +27,7 @@ type syncedFeature struct {
 }
 
 func main() {
-	stripeToken := os.Getenv("STRIPE_API_KEY")
+	stripeToken := os.Getenv("STRIPE_API_TOKEN")
 	if stripeToken == "" {
 		log.Println("stripe token cannot be empty")
 		os.Exit(1)
